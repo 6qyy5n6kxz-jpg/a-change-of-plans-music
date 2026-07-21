@@ -1,16 +1,16 @@
 :root {
-  --bg: #f6f2ea;
-  --bg-soft: #fffaf4;
-  --surface: rgba(255, 251, 245, 0.9);
-  --surface-strong: #fffdf9;
-  --text: #1e1a16;
-  --muted: #655b53;
-  --line: rgba(62, 47, 36, 0.12);
-  --brand: #b85c38;
-  --brand-dark: #8f3f1d;
-  --accent: #1d6b63;
-  --accent-soft: #d9efe9;
-  --shadow: 0 20px 50px rgba(35, 23, 15, 0.12);
+  --bg: #ebe9e0;
+  --bg-soft: #f6f4ee;
+  --surface: rgba(244, 242, 235, 0.92);
+  --surface-strong: #f6f4ee;
+  --text: #353535;
+  --muted: #5d5d5c;
+  --line: rgba(83, 83, 83, 0.14);
+  --brand: #535353;
+  --brand-dark: #2f2f2f;
+  --accent: #666662;
+  --accent-soft: rgba(83, 83, 83, 0.09);
+  --shadow: 0 20px 50px rgba(38, 38, 38, 0.1);
   --radius: 24px;
   --radius-sm: 16px;
   --container: 1120px;
@@ -30,24 +30,27 @@ body {
   margin: 0;
   font-family: "Manrope", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(184, 92, 56, 0.12), transparent 34%),
-    radial-gradient(circle at 85% 15%, rgba(29, 107, 99, 0.14), transparent 25%),
-    linear-gradient(180deg, #fbf7f0 0%, #f4ede2 100%);
+    radial-gradient(circle at 14% 8%, rgba(83, 83, 83, 0.08), transparent 26%),
+    radial-gradient(circle at 84% 14%, rgba(235, 233, 224, 0.7), transparent 24%),
+    linear-gradient(180deg, #f2f0e8 0%, #e7e4db 100%);
   color: var(--text);
   line-height: 1.6;
 }
 
-body[data-page="music"] {
+body[data-page="home"],
+body[data-page="music"],
+body[data-page="contact"],
+body[data-page="404"] {
   --bg: #ebe9e0;
-  --bg-soft: #f3f1ea;
+  --bg-soft: #f6f4ee;
   --surface: rgba(244, 242, 235, 0.92);
   --surface-strong: #f6f4ee;
-  --text: rgb(53, 53, 53);
-  --muted: rgb(93, 93, 92);
+  --text: #353535;
+  --muted: #5d5d5c;
   --line: rgba(83, 83, 83, 0.14);
-  --brand: rgb(83, 83, 83);
-  --brand-dark: rgb(61, 61, 61);
-  --accent: rgb(102, 98, 90);
+  --brand: #535353;
+  --brand-dark: #2f2f2f;
+  --accent: #666662;
   --accent-soft: rgba(83, 83, 83, 0.09);
   --shadow: 0 20px 50px rgba(38, 38, 38, 0.1);
   background:
@@ -56,92 +59,7 @@ body[data-page="music"] {
     linear-gradient(180deg, #f2f0e8 0%, #e7e4db 100%);
 }
 
-body[data-page="wine"] {
-  --bg: #fff6ea;
-  --bg-soft: #fffaf2;
-  --surface: rgba(255, 255, 255, 0.84);
-  --surface-strong: #fffdfa;
-  --text: #2b2118;
-  --muted: #69574a;
-  --line: rgba(116, 74, 33, 0.14);
-  --brand: #ee882d;
-  --brand-dark: #9f4317;
-  --accent: #4ca7cf;
-  --accent-soft: rgba(76, 167, 207, 0.16);
-  --shadow: 0 22px 52px rgba(119, 72, 24, 0.12);
-  background:
-    radial-gradient(circle at 14% 10%, rgba(251, 201, 42, 0.26), transparent 22%),
-    radial-gradient(circle at 87% 18%, rgba(98, 193, 231, 0.22), transparent 20%),
-    radial-gradient(circle at 80% 72%, rgba(176, 207, 84, 0.18), transparent 22%),
-    linear-gradient(180deg, #fff9f1 0%, #fef0de 100%);
-}
-
-body[data-page="cookies"] {
-  --bg: #fffaf4;
-  --bg-soft: #fffdf9;
-  --surface: rgba(255, 255, 255, 0.86);
-  --surface-strong: #fffefa;
-  --text: #2d2532;
-  --muted: #695f73;
-  --line: rgba(79, 63, 103, 0.12);
-  --brand: #ef7b2d;
-  --brand-dark: #2f388f;
-  --accent: #21a6df;
-  --accent-soft: rgba(33, 166, 223, 0.15);
-  --shadow: 0 22px 54px rgba(104, 78, 116, 0.12);
-  background:
-    radial-gradient(circle at 12% 10%, rgba(255, 223, 52, 0.24), transparent 22%),
-    radial-gradient(circle at 86% 14%, rgba(33, 166, 223, 0.2), transparent 21%),
-    radial-gradient(circle at 82% 74%, rgba(17, 168, 78, 0.16), transparent 23%),
-    radial-gradient(circle at 20% 78%, rgba(233, 35, 65, 0.14), transparent 24%),
-    linear-gradient(180deg, #fffdf8 0%, #fff4e9 100%);
-}
-
-body[data-page="photo-booth"] {
-  --bg: #f2f4ef;
-  --bg-soft: #fbfbf6;
-  --surface: rgba(255, 255, 255, 0.88);
-  --surface-strong: #fffefa;
-  --text: #202522;
-  --muted: #5f675f;
-  --line: rgba(45, 72, 68, 0.14);
-  --brand: #1d6b63;
-  --brand-dark: #124942;
-  --accent: #b85c38;
-  --accent-soft: rgba(184, 92, 56, 0.14);
-  --shadow: 0 22px 54px rgba(24, 49, 45, 0.12);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 34%),
-    linear-gradient(180deg, #fbf7ef 0%, #eef4f0 100%);
-}
-
-body[data-page="shop"] {
-  --bg: #fff8f1;
-  --bg-soft: #fffdf9;
-  --surface: rgba(255, 255, 255, 0.88);
-  --surface-strong: #fffefa;
-  --text: #2b2118;
-  --muted: #6a5849;
-  --line: rgba(104, 61, 29, 0.12);
-  --brand: #c6552d;
-  --brand-dark: #8d3418;
-  --accent: #195d73;
-  --accent-soft: rgba(25, 93, 115, 0.14);
-  --shadow: 0 22px 54px rgba(98, 58, 29, 0.12);
-  background:
-    radial-gradient(circle at 11% 10%, rgba(198, 85, 45, 0.16), transparent 23%),
-    radial-gradient(circle at 88% 16%, rgba(25, 93, 115, 0.14), transparent 20%),
-    linear-gradient(180deg, #fffdf9 0%, #f7eee4 100%);
-}
-
-body[data-page="home"] {
-  background:
-    radial-gradient(circle at 13% 9%, rgba(238, 136, 45, 0.16), transparent 24%),
-    radial-gradient(circle at 86% 14%, rgba(33, 166, 223, 0.14), transparent 22%),
-    radial-gradient(circle at 79% 74%, rgba(17, 168, 78, 0.1), transparent 24%),
-    radial-gradient(circle at 25% 78%, rgba(83, 83, 83, 0.08), transparent 22%),
-    linear-gradient(180deg, #fdf9f2 0%, #f5ede2 100%);
-}
+/* Unused theme blocks removed: wine, cookies, photo-booth, shop */
 
 img {
   max-width: 100%;
@@ -275,7 +193,7 @@ code {
   align-items: center;
   padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: rgba(184, 92, 56, 0.14);
+  background: rgba(83, 83, 83, 0.09);
   color: var(--brand-dark);
   font-size: 0.82rem;
   font-weight: 800;
@@ -284,8 +202,8 @@ code {
 }
 
 .hero-badge-soft {
-  background: rgba(29, 107, 99, 0.12);
-  color: #174f48;
+  background: rgba(83, 83, 83, 0.09);
+  color: #353535;
 }
 
 .button {
@@ -306,9 +224,14 @@ code {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--brand) 0%, #cf7b56 100%);
+  background: var(--brand);
   color: white;
-  box-shadow: 0 16px 32px rgba(184, 92, 56, 0.25);
+  box-shadow: 0 12px 24px rgba(83, 83, 83, 0.15);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--brand-dark);
 }
 
 .button-secondary {
@@ -402,7 +325,7 @@ code {
 }
 
 .accent-card {
-  background: linear-gradient(160deg, rgba(29, 107, 99, 0.92), rgba(14, 62, 57, 0.95));
+  background: linear-gradient(160deg, rgba(83, 83, 83, 0.88), rgba(47, 47, 47, 0.92));
   color: white;
 }
 
@@ -479,7 +402,7 @@ code {
 }
 
 .spotlight-card-accent {
-  background: linear-gradient(145deg, rgba(184, 92, 56, 0.96), rgba(210, 139, 98, 0.96));
+  background: linear-gradient(145deg, rgba(83, 83, 83, 0.92), rgba(120, 120, 120, 0.9));
   color: white;
 }
 
@@ -490,7 +413,7 @@ code {
 }
 
 .family-accent {
-  background: linear-gradient(145deg, rgba(29, 107, 99, 0.96), rgba(98, 170, 153, 0.94));
+  background: linear-gradient(145deg, rgba(83, 83, 83, 0.92), rgba(120, 120, 120, 0.9));
 }
 
 .offerings-grid {
@@ -843,9 +766,9 @@ code {
   aspect-ratio: 1;
   border-radius: 1.25rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(230, 243, 239, 0.86));
-  border: 1px solid rgba(29, 107, 99, 0.2);
-  box-shadow: 0 16px 30px rgba(29, 107, 99, 0.12);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 239, 235, 0.86));
+  border: 1px solid rgba(83, 83, 83, 0.2);
+  box-shadow: 0 16px 30px rgba(83, 83, 83, 0.12);
   overflow: hidden;
 }
 
@@ -856,7 +779,7 @@ code {
   inset: 0.85rem;
   border-radius: 0.9rem;
   background:
-    linear-gradient(160deg, rgba(29, 107, 99, 0.9), rgba(18, 73, 66, 0.94));
+    linear-gradient(160deg, rgba(83, 83, 83, 0.88), rgba(47, 47, 47, 0.92));
 }
 
 .home-brand-preview-logo-photo::after,
@@ -878,7 +801,7 @@ code {
   z-index: 1;
   display: block;
   border-radius: 999px;
-  background: rgba(184, 92, 56, 0.86);
+  background: rgba(83, 83, 83, 0.8);
 }
 
 .home-brand-preview-logo-photo span:nth-child(1),
@@ -1034,13 +957,13 @@ body[data-page="home"] .hero-copy h1 {
   border-radius: 999px;
   font-size: 0.84rem;
   font-weight: 800;
-  background: rgba(29, 107, 99, 0.12);
-  color: #14524b;
+  background: rgba(83, 83, 83, 0.09);
+  color: #353535;
 }
 
 .shop-inventory.is-sold-out {
-  background: rgba(198, 85, 45, 0.14);
-  color: #8d3418;
+  background: rgba(83, 83, 83, 0.09);
+  color: #5d5d5c;
 }
 
 .shop-local-copy {
@@ -2259,32 +2182,27 @@ body[data-page="photo-booth"] .photo-booth-banner {
   }
 }
 
-/* Frank Creations parent brand system */
+/* A Change of Plans music brand system */
 body,
 body[data-page="home"],
 body[data-page="music"],
-body[data-page="wine"],
-body[data-page="cookies"],
-body[data-page="photo-booth"],
-body[data-page="shop"],
 body[data-page="contact"],
-body[data-page="portfolio"],
-body[data-page="notfound"] {
-  --bg: #000000;
-  --bg-soft: #080808;
-  --surface: rgba(17, 17, 17, 0.92);
-  --surface-strong: #111111;
-  --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.72);
-  --line: rgba(212, 175, 55, 0.24);
-  --brand: #d4af37;
-  --brand-dark: #e5c76b;
-  --accent: #e5c76b;
-  --accent-soft: rgba(212, 175, 55, 0.14);
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
-  --radius: 8px;
-  --radius-sm: 6px;
-  background: linear-gradient(180deg, #000000 0%, #111111 52%, #000000 100%);
+body[data-page="404"] {
+  --bg: #ebe9e0;
+  --bg-soft: #f6f4ee;
+  --surface: rgba(244, 242, 235, 0.92);
+  --surface-strong: #f6f4ee;
+  --text: #353535;
+  --muted: #5d5d5c;
+  --line: rgba(83, 83, 83, 0.14);
+  --brand: #535353;
+  --brand-dark: #2f2f2f;
+  --accent: #666662;
+  --accent-soft: rgba(83, 83, 83, 0.09);
+  --shadow: 0 20px 50px rgba(38, 38, 38, 0.1);
+  --radius: 24px;
+  --radius-sm: 16px;
+  background: linear-gradient(180deg, #f2f0e8 0%, #e7e4db 100%);
   color: var(--text);
 }
 
@@ -2354,16 +2272,16 @@ body[data-page] .page-hero h1 {
 
 body .button-primary,
 body[data-page] .button-primary {
-  background: linear-gradient(135deg, #d4af37 0%, #e5c76b 100%);
-  color: #000000;
-  box-shadow: 0 16px 34px rgba(212, 175, 55, 0.24);
+  background: var(--brand);
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgba(83, 83, 83, 0.18);
 }
 
 body .button-secondary,
 body[data-page] .button-secondary {
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
-  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--brand);
+  border: 1px solid var(--brand);
 }
 
 .text-link {
@@ -2379,16 +2297,7 @@ body[data-page] .button-secondary {
 .feature-card,
 .content-card,
 .panel-card,
-.info-item,
-.event-card,
-.song-card,
-.shop-card,
-.gallery-card,
-.notice-banner,
-.cta-banner,
-.spotlight-card,
-.offering-card,
-.promo-panel,
+/* Unused brand theme backgrounds: only for old brand pages */
 .wine-hero-panel,
 .cookies-hero-panel,
 .home-parent-card,
@@ -2396,7 +2305,17 @@ body[data-page] .button-secondary {
 .photo-booth-hero-feature,
 .photo-booth-image-card,
 .photo-booth-event-card,
-.photo-booth-parent-brand,
+.photo-booth-parent-brand {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)),
+    #111111;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+/* A Change of Plans music brand - light surfaces */
 body[data-page] .offering-card,
 body[data-page] .feature-card-bright,
 body[data-page] .content-card,
@@ -2404,9 +2323,7 @@ body[data-page] .panel-card,
 body[data-page] .spotlight-card,
 body[data-page] .promo-panel,
 body[data-page] .cta-banner-strong {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)),
-    #111111;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -4238,7 +4155,7 @@ body[data-page="graduation"] .section {
 }
 
 .event-count strong {
-  color: #e5c75a;
+  color: var(--brand);
   font-size: 1.35rem;
 }
 
@@ -4247,9 +4164,9 @@ body[data-page="graduation"] .section {
 .music-schedule-booking {
   margin-top: 1rem;
   padding: 1.1rem;
-  border: 1px solid rgba(229, 199, 90, 0.32);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.045);
+  background: var(--surface);
 }
 
 .schedule-next-show .mini-heading,
@@ -4270,13 +4187,13 @@ body[data-page="graduation"] .section {
 }
 
 .schedule-next-show dt {
-  color: #e5c75a;
+  color: var(--brand);
   font-weight: 700;
 }
 
 .schedule-next-show dd {
   margin: 0;
-  color: #ffffff;
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -4292,7 +4209,7 @@ body[data-page="graduation"] .section {
   display: grid;
   gap: 0.1rem;
   padding-bottom: 0.7rem;
-  border-bottom: 1px solid rgba(229, 199, 90, 0.18);
+  border-bottom: 1px solid var(--line);
 }
 
 .schedule-highlights li:last-child {
@@ -4301,13 +4218,13 @@ body[data-page="graduation"] .section {
 }
 
 .schedule-highlights time {
-  color: #e5c75a;
+  color: var(--brand);
   font-size: 0.84rem;
   font-weight: 700;
 }
 
 .schedule-highlights span {
-  color: #ffffff;
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -4330,8 +4247,8 @@ body[data-page="graduation"] .section {
   flex-direction: column;
   gap: 0.7rem;
   padding: 1.25rem;
-  border-color: rgba(229, 199, 90, 0.32);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)), #111111;
+  border-color: var(--line);
+  background: var(--surface);
 }
 
 .music-event-list .event-card[hidden] {
@@ -4349,10 +4266,10 @@ body[data-page="graduation"] .section {
   display: inline-flex;
   width: fit-content;
   padding: 0.45rem 0.8rem;
-  border: 1px solid #e5c75a;
+  border: 1px solid var(--brand);
   border-radius: 999px;
-  background: #e5c75a;
-  color: #111111;
+  background: var(--accent-soft);
+  color: var(--brand);
   font-size: 0.86rem;
   font-weight: 800;
   line-height: 1.2;
@@ -4361,9 +4278,9 @@ body[data-page="graduation"] .section {
 .private-event-label {
   display: inline-flex;
   padding: 0.35rem 0.65rem;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--muted);
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.2;
@@ -4372,7 +4289,7 @@ body[data-page="graduation"] .section {
 
 .music-event-list .event-card h3 {
   margin: 0;
-  color: #ffffff;
+  color: var(--text);
   line-height: 1.25;
 }
 
@@ -4387,17 +4304,17 @@ body[data-page="graduation"] .section {
   gap: 0.35rem;
   margin: 0.2rem 0 0;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(229, 199, 90, 0.2);
+  border-top: 1px solid var(--line);
   line-height: 1.35;
 }
 
 .music-event-list .event-time strong {
-  color: #e5c75a;
+  color: var(--brand);
   font-weight: 800;
 }
 
 .music-event-list .event-time span {
-  color: #ffffff;
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -4433,7 +4350,7 @@ body[data-page="graduation"] .section {
   display: grid;
   gap: 0.65rem;
   margin-top: 1.4rem;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--text);
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -4461,9 +4378,7 @@ body[data-page="graduation"] .section {
 .home-testimonial-card {
   min-height: 100%;
   padding: 1.45rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.03)),
-    #111111;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
