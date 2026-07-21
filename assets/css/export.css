@@ -1,0 +1,14 @@
+.acop-footer-logo-link {
+  width: 150px;
+}
+
+.acop-footer-logo {
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+@media (max-width: 520px) {
+  .brand-lockup > span > span {
+    display: none;
+  }
+}

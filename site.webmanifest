@@ -1,0 +1,17 @@
+{
+  "name": "A Change Of Plans",
+  "short_name": "Change Of Plans",
+  "description": "Acoustic solo and duo live music for venues, weddings, private parties, festivals, and community events.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "images/colored-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

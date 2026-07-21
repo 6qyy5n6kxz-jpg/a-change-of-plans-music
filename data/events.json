@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "category": "music",
+      "date": "2026-07-31",
+      "time": "6:00 PM - 9:00 PM",
+      "title": "The Oak Harbor Golf Course.",
+      "description": "Special guest Jerry Wittman."
+    },
+    {
+      "category": "music",
+      "date": "2026-08-01",
+      "time": "2:00 PM - 9:00 PM",
+      "title": "Private Function",
+      "description": "Book us for your upcoming private event; including weddings, corporate events, Christmas parties & more!"
+    },
+    {
+      "category": "music",
+      "date": "2026-08-02",
+      "time": "6:00 PM - 7:30 PM",
+      "title": "Oak Harbor Log Cabin Summer Concert Series",
+      "description": "Help us pack the lawn for our debut at the Oak Harbor Log Cabin!"
+    },
+    {
+      "category": "music",
+      "date": "2026-08-07",
+      "time": "11:00 AM - 2:00 PM",
+      "title": "Ottawa County Senior Resources City of Port Clinton Picnic",
+      "description": "Honored to be returning for our 3rd year at this great event."
+    },
+    {
+      "category": "music",
+      "date": "2026-08-15",
+      "time": "6:00 PM - 9:00 PM",
+      "title": "Port Clinton Elks Club",
+      "description": "Debut!"
+    },
+    {
+      "category": "music",
+      "date": "2026-08-16",
+      "time": "9:00 AM",
+      "title": "St. Paul's Lutheran Church",
+      "description": "9789 W Oak Harbor SE Road, Oak Harbor, OH 43449"
+    },
+    {
+      "category": "music",
+      "date": "2026-08-22",
+      "time": "6:00 PM - 9:00 PM",
+      "title": "The Mockingbird On Mill Road",
+      "description": "Back to the place where it all started."
+    },
+    {
+      "category": "music",
+      "date": "2026-08-23",
+      "time": "10:00 AM",
+      "title": "Elmore Church Of God.",
+      "description": "Join us at The Elmore COG every 4th Sunday!"
+    },
+    {
+      "category": "music",
+      "date": "2026-08-27",
+      "time": "1:30 PM",
+      "title": "Sandusky County Fair",
+      "description": "Our debut at the Sandusky County Fair!"
+    }
+  ]
+}
