@@ -21,7 +21,7 @@ const FEATURED_SONGS = [
 let activeFilter = "all";
 let visibleSongCount = RESULTS_BATCH_SIZE;
 let allSongs = [];
-let hasExitedFeaturedMode = false;
+let hasExitedFeaturedMode = true;  // Start with featured mode disabled - show all songs with pagination
 
 const normalizeValue = (value) => (value || "").toString().trim().toLowerCase();
 
