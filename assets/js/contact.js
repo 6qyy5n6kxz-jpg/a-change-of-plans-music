@@ -5,6 +5,7 @@ if (contactForm && contactFeedback) {
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const query = new URLSearchParams(window.location.search);
   const performanceFormat = contactForm.querySelector('select[name="performanceFormat"]');
+  const eventType = contactForm.querySelector('[data-event-type]');
   const estimateField = contactForm.querySelector("[data-estimated-total]");
   const sourcePageField = contactForm.querySelector("[data-source-page]");
 
@@ -12,6 +13,33 @@ if (contactForm && contactFeedback) {
   if (performanceFormat) {
     if (/solo/i.test(requestedService)) performanceFormat.value = "A Change Of Plans Solo";
     if (/duo/i.test(requestedService)) performanceFormat.value = "A Change Of Plans Duo";
+  }
+
+  const requestedEventType = query.get("eventType") || "";
+  if (eventType && requestedEventType) {
+    const matchingOption = [...eventType.options].find((option) => option.value.toLowerCase() === requestedEventType.toLowerCase());
+    if (matchingOption) eventType.value = matchingOption.value;
+  }
+
+  const updateConditionalFields = () => {
+    if (!eventType) return;
+    const value = eventType.value.toLowerCase();
+    const activeGroup = value.includes("wedding")
+      ? "wedding"
+      : value.includes("church")
+        ? "church"
+        : value.includes("restaurant")
+          ? "venue"
+          : "";
+
+    contactForm.querySelectorAll("[data-conditional]").forEach((group) => {
+      group.hidden = group.dataset.conditional !== activeGroup;
+    });
+  };
+
+  if (eventType) {
+    eventType.addEventListener("change", updateConditionalFields);
+    updateConditionalFields();
   }
 
   if (estimateField && query.has("estimate")) {
@@ -70,7 +98,7 @@ if (contactForm && contactFeedback) {
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = "Request Availability";
+        submitButton.textContent = "Check Availability";
       }
     }
   });

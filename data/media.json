@@ -1,0 +1,19 @@
+{
+  "performanceVideo": {
+    "enabled": false,
+    "url": "",
+    "poster": "",
+    "title": ""
+  },
+  "professionalPortraits": {
+    "duo": "",
+    "devin": "",
+    "kendra": ""
+  },
+  "galleries": {
+    "weddings": [],
+    "festivalsAndVenues": [],
+    "churches": []
+  },
+  "instructions": "Keep performanceVideo.enabled false until a real professional video URL and poster are supplied. Add approved image paths to the portrait and gallery fields, then replace the commented media slots in index.html. A future /watch page should read this configuration and should not be linked or indexed while enabled is false."
+}

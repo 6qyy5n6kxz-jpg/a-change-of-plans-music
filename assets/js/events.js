@@ -32,6 +32,32 @@ const getTodayKey = () => {
 const getEventHeadline = (event) => event.venue || event.location || event.title || "Venue details coming soon";
 const isPrivateEvent = (event) => /private\s+(?:function|event)/i.test(`${event.title || ""} ${event.description || ""}`);
 
+const injectEventSchema = (items) => {
+  const publicEvents = items.filter((event) => !isPrivateEvent(event));
+  if (!publicEvents.length) return;
+
+  const previousSchema = document.querySelector("[data-generated-event-schema]");
+  if (previousSchema) previousSchema.remove();
+
+  const schema = document.createElement("script");
+  schema.type = "application/ld+json";
+  schema.dataset.generatedEventSchema = "";
+  schema.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": publicEvents.map((event) => ({
+      "@type": "MusicEvent",
+      name: event.title || "A Change Of Plans live performance",
+      startDate: event.date,
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      description: event.description || "Live performance by A Change Of Plans.",
+      location: { "@type": "Place", name: getEventHeadline(event) },
+      performer: { "@type": "MusicGroup", "@id": "https://achangeofplansmusic.com/#group", name: "A Change Of Plans" }
+    }))
+  });
+  document.head.append(schema);
+};
+
 const renderDescription = (description) => description
   ? `<p class="event-description">${escapeHtml(description)}</p>`
   : "";
@@ -113,6 +139,8 @@ const renderEvents = async () => {
       .filter((event) => event.category === category)
       .filter((event) => event.date >= todayKey)
       .sort((left, right) => left.date.localeCompare(right.date));
+
+    injectEventSchema(items);
 
     renderSummary(items, category);
 

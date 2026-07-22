@@ -1,11 +1,11 @@
 {
   "name": "A Change Of Plans",
   "short_name": "Change Of Plans",
-  "description": "Acoustic solo and duo live music for venues, weddings, private parties, festivals, and community events.",
+  "description": "Northwest Ohio solo and duo live music with piano, guitar, and two lead vocalists.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#ebe9e0",
+  "theme_color": "#31564b",
   "icons": [
     {
       "src": "images/colored-logo.svg",

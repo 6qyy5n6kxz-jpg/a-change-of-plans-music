@@ -6,7 +6,7 @@ This folder is a self-contained static website prepared for the separate domain 
 
 ### Copied and adapted content
 
-- `index.html` — adapted from `a-change-of-plans/index.html` and promoted to the standalone homepage. The visible music content, schedule, song catalog, song request form, tip links, social links, photos, pricing, and booking calls to action were retained.
+- `index.html` — booking-focused homepage with positioning, benefits, duo introductions, event categories, schedule preview, review-ready callout, existing photos, pricing preview, verified appearance names, and booking calls to action.
 - `assets/css/styles.css` — copied from the shared Frank Creations stylesheet to preserve the existing appearance. It includes dormant selectors for pages that are not present in this export; those selectors do not add unrelated content or runtime dependencies.
 - `assets/fonts/` — locally hosted Manrope and Playfair Display font files used by the existing design, plus their Open Font License files.
 - `assets/js/events.js` — copied schedule renderer.
@@ -18,7 +18,9 @@ This folder is a self-contained static website prepared for the separate domain 
 
 ### Newly created standalone files
 
-- `contact/index.html` — focused A Change Of Plans booking page using the relevant fields from the existing event-inquiry workflow.
+- `contact/index.html` — structured booking inquiry with conditional follow-ups for weddings, churches, and venues.
+- `about/`, `pricing/`, `shows/`, `song-list/`, and `live/` — dedicated planning and fan routes.
+- `weddings-private-events/`, `restaurants-bars/`, `festivals-community-events/`, and `churches/` — audience-specific event landing pages.
 - `assets/js/main.js` — band-only navigation, footer, path resolution, current-year display, and mobile menu behavior.
 - `assets/js/contact.js` — band-only booking-form prefill and Formspree submission behavior.
 - `assets/css/export.css` — minimal logo/layout compatibility rules layered over the copied stylesheet.
@@ -46,6 +48,8 @@ There are no links to Frank Creations pages or assets and no event-rental, photo
 - Replace the square SVG social image with a dedicated 1200-by-630 preview image if richer social sharing previews are desired.
 - Configure the custom domain and HTTPS in the destination repository's GitHub Pages settings. The included `CNAME` assumes the apex domain `achangeofplansmusic.com`.
 - Keep `data/events.json` and `data/songs.json` current after the new repository becomes the source of truth.
+- Dynamic Event JSON-LD is generated from `data/events.json`; do not duplicate show dates in page markup.
+- Future media replacement points are commented in `index.html` and `assets/css/export.css`. Add a `/watch` route only after a real performance video is available.
 - The full shared stylesheet was retained for fidelity. It can be pruned later with visual regression testing, after the standalone site is approved.
 
 ## Preview locally

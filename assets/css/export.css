@@ -1,14 +1,183 @@
-.acop-footer-logo-link {
-  width: 150px;
+/* A Change Of Plans standalone components.
+   Future media: replace images referenced by .hero-photo and .duo-photo; add a
+   watch page/nav item only after a real performance video URL is available. */
+
+:root {
+  --acop-ink: #262927;
+  --acop-green: #31564b;
+  --acop-green-dark: #213d35;
+  --acop-gold: #825f2f;
 }
 
-.acop-footer-logo {
-  aspect-ratio: 1;
-  object-fit: contain;
+body[data-page] {
+  --brand: var(--acop-green);
+  --brand-dark: var(--acop-green-dark);
+  --accent: var(--acop-gold);
+  --accent-soft: rgba(49, 86, 75, 0.1);
+}
+
+.acop-footer-logo-link { width: 150px; }
+.acop-footer-logo { aspect-ratio: 1; object-fit: contain; }
+
+.site-nav { align-items: center; }
+.site-nav .nav-cta { background: var(--brand); color: #fff; }
+.site-nav .nav-cta:hover,
+.site-nav .nav-cta:focus-visible,
+.site-nav .nav-cta[aria-current="page"] { background: var(--brand-dark); color: #fff; }
+.nav-group { position: relative; }
+.nav-group summary {
+  cursor: pointer;
+  list-style: none;
+  padding: .8rem .95rem;
+  border-radius: .9rem;
+  font-weight: 700;
+}
+.nav-group summary::-webkit-details-marker { display: none; }
+.nav-group summary::after { content: " +"; }
+.nav-group[open] summary::after { content: " −"; }
+.nav-submenu { display: grid; gap: .25rem; padding: .35rem 0 0 .7rem; }
+
+.hero-booking { padding: clamp(2.5rem, 7vw, 6rem) 0; }
+.hero-booking-grid { display: grid; gap: 2rem; align-items: center; }
+.hero-booking-copy { max-width: 46rem; }
+.hero-booking h1 { font-size: clamp(2.75rem, 7vw, 5.75rem); }
+.hero-location { max-width: 44rem; font-weight: 700; color: var(--brand-dark); }
+.hero-photo,
+.duo-photo {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: var(--radius);
+  background: #d9d7cf;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 35%; }
+.hero-photo figcaption,
+.duo-photo figcaption { padding: .75rem 1rem; color: var(--muted); font-size: .85rem; }
+
+.positioning-strip { text-align: center; }
+.positioning-strip .section-heading { max-width: 58rem; margin: 0 auto; }
+.positioning-strip h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+
+.benefit-grid,
+.event-category-grid,
+.duo-grid,
+.pricing-preview,
+.faq-grid,
+.proof-grid { display: grid; gap: 1rem; }
+.benefit-card,
+.event-category-card,
+.duo-card,
+.faq-item,
+.proof-card {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.benefit-card h3,
+.event-category-card h3,
+.duo-card h3,
+.faq-item h3,
+.proof-card h3 { margin: 0 0 .55rem; }
+.benefit-card p,
+.event-category-card p,
+.duo-card p,
+.faq-item p,
+.proof-card p { margin-bottom: 0; color: var(--muted); }
+.benefit-number { color: var(--accent); font-weight: 800; letter-spacing: .12em; }
+.event-category-card { display: flex; flex-direction: column; }
+.event-category-card .text-link { margin-top: auto; padding-top: 1rem; }
+.duo-role { margin: -.2rem 0 1rem; color: var(--brand); font-weight: 800; }
+.duo-together { max-width: 52rem; margin: 1.5rem auto 0; text-align: center; color: var(--muted); }
+
+.photo-preview { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+.photo-preview figure { margin: 0; overflow: hidden; border-radius: var(--radius-sm); }
+.photo-preview img { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.photo-preview figure:first-child { grid-column: 1 / -1; }
+
+.price-simple { display: block; margin: .5rem 0 1rem; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; color: var(--brand-dark); }
+.price-simple small { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+
+.review-callout { text-align: center; }
+.review-callout .button-row { justify-content: center; }
+.venue-list { display: flex; flex-wrap: wrap; gap: .65rem; padding: 0; list-style: none; }
+.venue-list li { padding: .65rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.6); font-weight: 700; }
+
+.page-hero-compact { padding: 3.5rem 0; }
+.breadcrumbs { margin-bottom: 1rem; color: var(--muted); font-size: .9rem; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; margin: 0; list-style: none; }
+.breadcrumbs li + li::before { content: "/"; margin-right: .45rem; }
+.prose-lead { max-width: 48rem; font-size: 1.12rem; color: var(--muted); }
+.check-list { padding-left: 1.25rem; color: var(--muted); }
+.check-list li + li { margin-top: .55rem; }
+.faq-item h3 { font-family: "Manrope", sans-serif; font-size: 1.05rem; }
+.faq-item p { margin-top: 0; }
+.section-tight { padding-top: 0; }
+
+.shows-page .music-schedule-layout { grid-template-columns: 1fr; }
+.shows-page .music-schedule-booking { display: none; }
+.shows-page .music-event-list { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.shows-page .schedule-toggle { display: none; }
+
+.live-action-grid { display: grid; gap: 1rem; }
+.live-action-grid .content-card { height: fit-content; }
+.social-buttons { display: flex; flex-wrap: wrap; gap: .65rem; }
+
+.form-intro-note { padding: 1rem 1.25rem; border-left: 4px solid var(--accent); background: rgba(255,255,255,.55); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.form-section-description { margin-top: -.4rem; color: var(--muted); }
+.conditional-fields { grid-column: 1 / -1; padding-top: .25rem; }
+.conditional-fields .form-grid { margin-top: .75rem; }
+
+.final-cta { background: linear-gradient(145deg, var(--brand), var(--brand-dark)); color: #fff; }
+.final-cta p,
+.final-cta .eyebrow { color: rgba(255,255,255,.82); }
+.final-cta .button-primary { background: #fff; color: var(--brand-dark); }
+
+.footer-utility { display: flex; flex-wrap: wrap; gap: 1rem; }
+.footer-utility a { font-weight: 700; }
+
+@media (min-width: 680px) {
+  .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .event-category-grid,
+  .duo-grid,
+  .pricing-preview,
+  .faq-grid,
+  .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photo-preview { grid-template-columns: repeat(3, 1fr); }
+  .photo-preview figure:first-child { grid-column: auto; }
+  .live-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 960px) {
+  .hero-booking-grid { grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); }
+  .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .event-category-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .site-nav { display: flex; gap: .15rem; }
+  .nav-group summary { padding: .65rem .75rem; }
+  .nav-submenu {
+    position: absolute;
+    top: calc(100% + .5rem);
+    left: 0;
+    width: 270px;
+    padding: .6rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  .site-nav > a { padding: .65rem .75rem; }
+  .site-nav .nav-cta { padding-inline: 1rem; }
+}
+
+@media (max-width: 959px) {
+  .site-nav { max-height: calc(100vh - 96px); overflow-y: auto; }
+  .nav-group summary { padding: .8rem .95rem; }
 }
 
 @media (max-width: 520px) {
-  .brand-lockup > span > span {
-    display: none;
-  }
+  .brand-lockup > span > span { display: none; }
+  .hero-booking .button { width: 100%; }
 }
