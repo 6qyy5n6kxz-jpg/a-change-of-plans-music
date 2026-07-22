@@ -6,7 +6,7 @@ This folder is a self-contained static website prepared for the separate domain 
 
 ### Copied and adapted content
 
-- `index.html` — booking-focused homepage with positioning, benefits, duo introductions, event categories, schedule preview, review-ready callout, existing photos, pricing preview, verified appearance names, and booking calls to action.
+- `index.html` — booking-focused homepage with positioning, benefits, duo introductions, event categories, schedule preview, data-driven reviews, existing photos, duo-first pricing, verified appearance names, and booking calls to action.
 - `assets/css/styles.css` — copied from the shared Frank Creations stylesheet to preserve the existing appearance. It includes dormant selectors for pages that are not present in this export; those selectors do not add unrelated content or runtime dependencies.
 - `assets/fonts/` — locally hosted Manrope and Playfair Display font files used by the existing design, plus their Open Font License files.
 - `assets/js/events.js` — copied schedule renderer.
@@ -21,6 +21,8 @@ This folder is a self-contained static website prepared for the separate domain 
 - `contact/index.html` — structured booking inquiry with conditional follow-ups for weddings, churches, and venues.
 - `about/`, `pricing/`, `shows/`, `song-list/`, and `live/` — dedicated planning and fan routes.
 - `weddings-private-events/`, `restaurants-bars/`, `festivals-community-events/`, and `churches/` — audience-specific event landing pages.
+- `reviews/` and `data/reviews.json` — moderated review submission and approved-review display.
+- `request-song/` and `assets/js/event-request.js` — query-string-based requests for eligible public events.
 - `assets/js/main.js` — band-only navigation, footer, path resolution, current-year display, and mobile menu behavior.
 - `assets/js/contact.js` — band-only booking-form prefill and Formspree submission behavior.
 - `assets/css/export.css` — minimal logo/layout compatibility rules layered over the copied stylesheet.
@@ -34,8 +36,8 @@ This folder is a self-contained static website prepared for the separate domain 
 
 The export includes every local file needed by its HTML, CSS, JavaScript, images, and typography. The only external runtime services are:
 
-- Formspree endpoint `xwvwygzl` for song requests.
-- Formspree endpoint `xreojwny` for booking inquiries.
+- Formspree endpoint `xwvwygzl` for live and event-specific song requests.
+- Formspree endpoint `xreojwny` for booking inquiries and clearly labeled review submissions.
 - Facebook, Instagram, Venmo, and Cash App destinations linked from the visible page.
 
 There are no links to Frank Creations pages or assets and no event-rental, photo-booth, tent, Wine & Canvas, Cookies & Canvas, graduation-package, shop, or unrelated-service sections in the exported HTML or JavaScript.
@@ -44,7 +46,7 @@ There are no links to Frank Creations pages or assets and no event-rental, photo
 
 - Confirm both Formspree endpoints are owned by the correct account, accept submissions from the new domain, and deliver to the intended mailbox. Test submissions were not sent during export creation.
 - Confirm the Venmo and Cash App handles are still intended for A Change Of Plans.
-- Confirm current schedule dates, pricing, the published service area, and the “house band at The Mockingbird” statement.
+- Confirm current schedule dates, pricing, and the published service area.
 - Replace the square SVG social image with a dedicated 1200-by-630 preview image if richer social sharing previews are desired.
 - Configure the custom domain and HTTPS in the destination repository's GitHub Pages settings. The included `CNAME` assumes the apex domain `achangeofplansmusic.com`.
 - Keep `data/events.json` and `data/songs.json` current after the new repository becomes the source of truth.
@@ -85,3 +87,44 @@ No files were removed or modified in the original Frank Creations website as par
 - No live form submissions were made.
 
 Safari WebDriver could not be used for automated console inspection because “Allow remote automation” is disabled in the local Safari settings. Complete the short rendered-browser checklist above before production deployment.
+
+## Review moderation
+
+Review submissions go to the configured `reviewFormEndpoint` in `data/site-config.json` with `form_type: testimonial_submission`. They never write to the public website automatically.
+
+To publish an approved review, add an object to the `reviews` array in `data/reviews.json`. Supported fields are `id`, `name`, `displayName`, `eventType`, `venue`, `eventDate`, `reviewText`, `rating`, `source`, `sourceUrl`, `approved`, `featured`, and `submittedAt`. Do not add the submitter's email. Set `approved` to `true` only after reviewing the submission and confirming display permission. Set `featured` to `true` to make the review eligible for the homepage preview. Public rendering escapes all review text.
+
+`data/site-config.json` contains `googleReviewUrl`. Leave it empty until the real Google review URL is available; the Google review panel remains hidden while it is blank.
+
+## Event-specific song requests
+
+Every schedule item has a unique `eventId`, `publicEvent`, `allowSongRequests`, and timezone-qualified `startsAt` value. Requests are disabled by default.
+
+To enable requests for a public show in `data/events.json`:
+
+```json
+{
+  "eventId": "unique-event-id",
+  "publicEvent": true,
+  "allowSongRequests": true,
+  "startsAt": "2026-08-02T18:00:00-04:00",
+  "requestDeadline": "2026-08-02T15:00:00-04:00",
+  "requestLabel": "Request a Song for the Oak Harbor Show"
+}
+```
+
+`requestDeadline` and `requestLabel` are optional. When no deadline is provided, requests close at `startsAt`. Always include the Northwest Ohio UTC offset (`-04:00` during daylight time or `-05:00` during standard time). Disable requests by setting `allowSongRequests` to `false`. Private events must use `publicEvent: false` and never receive request buttons.
+
+Eligible event cards link to `/request-song/?event=event-id`. The request page reloads the event record, checks privacy and deadline rules again, and limits the song field to `data/songs.json`. Submissions use the song-request endpoint with `form_type: event_song_request` and include the event ID, title, and date. The static site does not claim to enforce per-email request limits.
+
+## Image crops
+
+The media system preserves image proportions with component-specific aspect ratios and `object-fit: cover`. The homepage hero and gallery previews use 4:5; the About performance image uses 3:4. Below-the-fold images are lazy-loaded and all current images include intrinsic width and height attributes.
+
+Adjust an individual crop by setting `--media-position` on its figure, for example:
+
+```html
+<figure class="hero-photo" style="--media-position: center 35%;">
+```
+
+The first value moves the crop horizontally and the second vertically. This changes framing without stretching the source. General crop guidance is also recorded in `data/media.json`.

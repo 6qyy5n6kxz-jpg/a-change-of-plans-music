@@ -11,7 +11,14 @@ if (contactForm && contactFeedback) {
 
   const requestedService = query.get("services") || "";
   if (performanceFormat) {
-    if (/solo/i.test(requestedService)) performanceFormat.value = "A Change Of Plans Solo";
+    const soloOption = [...performanceFormat.options].find((option) => /solo/i.test(option.value));
+    if (soloOption) {
+      soloOption.value = "Devin Frank Solo";
+      soloOption.textContent = "Devin Frank Solo (select bookings)";
+    }
+    const formatLabel = performanceFormat.closest("label")?.querySelector("span");
+    if (formatLabel) formatLabel.textContent = "Performance preference *";
+    if (/solo/i.test(requestedService)) performanceFormat.value = "Devin Frank Solo";
     if (/duo/i.test(requestedService)) performanceFormat.value = "A Change Of Plans Duo";
   }
 

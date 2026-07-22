@@ -47,8 +47,8 @@
           </div>
         </div>
         <!-- FUTURE MEDIA: replace this image path with the professional duo portrait. -->
-        <figure class="hero-photo">
-          <img src="images/a-change-of-plans-live-1.jpg" width="768" height="960" alt="Devin Frank and Kendra German together beside microphones and a keyboard at a Northwest Ohio venue">
+        <figure class="hero-photo" style="--media-position: center 35%;">
+          <img src="images/a-change-of-plans-live-1.jpg" width="768" height="960" fetchpriority="high" decoding="async" alt="Devin Frank and Kendra German together beside microphones and a keyboard at a Northwest Ohio venue">
           <figcaption>Devin Frank and Kendra German of A Change Of Plans.</figcaption>
         </figure>
       </div>
@@ -115,11 +115,9 @@
     </section>
 
     <section class="section">
-      <div class="container review-callout content-card">
-        <p class="eyebrow">Share your experience</p>
-        <h2>Have you seen A Change Of Plans perform?</h2>
-        <p>We’d love to hear about your experience. This space will feature real audience and client feedback as it becomes available.</p>
-        <div class="button-row"><a class="button button-secondary" href="contact/?source=feedback">Share Your Feedback</a></div>
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">Reviews</p><h2>Experiences shared by guests and event hosts</h2></div>
+        <div class="reviews-grid" data-reviews-preview aria-live="polite"><div class="review-empty"><p>Loading approved reviews…</p></div></div>
       </div>
     </section>
 
@@ -128,9 +126,9 @@
         <div class="section-heading"><p class="eyebrow">Live moments</p><h2>A look at recent performances</h2><p>Current performance photos, ready to be updated when professional galleries are available.</p></div>
         <!-- FUTURE MEDIA: replace these three files with professional wedding, festival/venue, and church galleries. -->
         <div class="photo-preview">
-          <figure><img src="images/a-change-of-plans-live-1.jpg" width="768" height="960" loading="lazy" alt="Devin Frank and Kendra German standing beside microphones and a keyboard at a Northwest Ohio venue"></figure>
-          <figure><img src="images/a-change-of-plans-live-2.jpg" width="1536" height="2048" loading="lazy" alt="A Change Of Plans performing live with keyboard and lead vocals"></figure>
-          <figure><img src="images/a-change-of-plans-live-3.jpg" width="1536" height="2048" loading="lazy" alt="Devin Frank and Kendra German together at a formal indoor keyboard setup"></figure>
+          <figure><img src="images/a-change-of-plans-live-1.jpg" width="768" height="960" loading="lazy" decoding="async" alt="Devin Frank and Kendra German standing beside microphones and a keyboard at a Northwest Ohio venue"></figure>
+          <figure style="--media-position: center 24%;"><img src="images/a-change-of-plans-live-2.jpg" width="1536" height="2048" loading="lazy" decoding="async" alt="A Change Of Plans performing live with keyboard and lead vocals"></figure>
+          <figure style="--media-position: center 24%;"><img src="images/a-change-of-plans-live-3.jpg" width="1536" height="2048" loading="lazy" decoding="async" alt="Devin Frank and Kendra German together at a formal indoor keyboard setup"></figure>
         </div>
       </div>
     </section>
@@ -138,9 +136,9 @@
     <section class="section">
       <div class="container">
         <div class="section-heading"><p class="eyebrow">Pricing preview</p><h2>Simple starting points</h2></div>
-        <div class="pricing-preview">
-          <article class="pricing-card"><h3>Solo Performance</h3><span class="price-simple"><small>Starting at</small>$200</span><p>For intimate settings and events where one performer is the right fit.</p></article>
-          <article class="pricing-card"><h3>A Change Of Plans Duo</h3><span class="price-simple"><small>Starting at</small>$300</span><p>Two lead vocalists with piano and guitar for greater variety throughout the event.</p></article>
+        <div class="pricing-preview pricing-preview-home">
+          <article class="pricing-card pricing-card-primary"><p class="eyebrow">Signature performance</p><h3>A Change Of Plans Duo</h3><span class="price-simple"><small>Starting at</small>$300</span><p>Devin and Kendra bring two lead vocalists, piano, and guitar for greater variety throughout the event.</p></article>
+          <article class="pricing-card pricing-card-secondary"><p class="eyebrow">Available upon request</p><h3>Devin Frank Solo</h3><span class="price-simple"><small>Starting at</small>$200</span><p>A secondary option for select smaller settings, subject to Devin’s schedule.</p></article>
         </div>
         <p class="service-note">Pricing varies based on performance length, location, production needs, and event type.</p>
         <div class="button-row button-row-centered"><a class="button button-secondary" href="pricing/">View Pricing and Booking Details</a></div>
@@ -166,5 +164,6 @@
   <div data-site-footer></div>
   <script type="module" src="assets/js/main.js"></script>
   <script type="module" src="assets/js/events.js"></script>
+  <script type="module" src="assets/js/reviews.js"></script>
 </body>
 </html>

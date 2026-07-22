@@ -15,5 +15,8 @@
     "festivalsAndVenues": [],
     "churches": []
   },
+  "cropControls": {
+    "instructions": "Displayed photos use a CSS custom property on the figure: style=\"--media-position: center 35%;\". Change the horizontal and vertical percentages to keep faces in frame. Hero photos use a 4:5 crop, About uses 3:4, and gallery previews use 4:5. Never set an image width and height that conflicts with its component aspect ratio."
+  },
   "instructions": "Keep performanceVideo.enabled false until a real professional video URL and poster are supplied. Add approved image paths to the portrait and gallery fields, then replace the commented media slots in index.html. A future /watch page should read this configuration and should not be linked or indexed while enabled is false."
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Request a Song for an Upcoming Show | A Change Of Plans</title>
+  <meta name="description" content="Choose a song from the current A Change Of Plans repertoire for an eligible upcoming public performance.">
+  <link rel="canonical" href="https://achangeofplansmusic.com/request-song/">
+  <link rel="icon" href="../images/colored-logo.svg">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/export.css">
+</head>
+<body data-page="request-song" data-site-root="..">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div data-site-header></div>
+  <main id="main-content">
+    <section class="page-hero page-hero-music page-hero-compact"><div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li><a href="../shows/">Shows</a></li><li aria-current="page">Request a Song</li></ol></nav><p class="eyebrow">An upcoming public show</p><h1>Request a Song for This Show</h1><p class="prose-lead">Choose a song from our current list and let us know what you’d love to hear. Requests help us shape the set, but submitting one does not guarantee that the song will be performed.</p></div></section>
+
+    <section class="section section-tight"><div class="container"><div class="review-empty" data-event-request-unavailable><h2>Checking event availability…</h2><p data-unavailable-message>Please wait while we load the selected show.</p><div class="button-row button-row-centered"><a class="button button-secondary" href="../shows/">View Upcoming Shows</a></div></div><div data-event-request-panel hidden><div class="selected-event-summary" aria-live="polite"><h2 data-selected-event-title></h2><p data-selected-event-meta></p></div><form class="stacked-form" data-event-request-form data-formspree-endpoint="https://formspree.io/f/xwvwygzl"><section class="form-section"><div class="form-grid"><label class="field"><span>Name *</span><input type="text" name="requester_name" required autocomplete="name"></label><label class="field"><span>Email *</span><input type="email" name="requester_email" required autocomplete="email"></label><label class="field field-wide"><span>Choose a song from the current list *</span><select name="song_title" data-event-song-select required><option value="">Choose a song</option></select></label><label class="field"><span>Optional message</span><textarea name="message" rows="3" maxlength="1000"></textarea></label><label class="field"><span>Optional dedication</span><textarea name="dedication" rows="3" maxlength="500"></textarea></label></div><label class="permission-field"><input type="checkbox" name="email_consent" value="yes" required><span>I understand my email will be included with this private request so A Change Of Plans can review it. My request and contact details will not be published.</span></label><label class="honeypot" aria-hidden="true">Leave this field blank<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label><input type="hidden" name="form_type" value="event_song_request"><input type="hidden" name="event_id"><input type="hidden" name="event_title"><input type="hidden" name="event_date"><button class="button button-primary" type="submit">Send Event Song Request</button><p class="form-feedback" data-event-request-feedback role="status" aria-live="polite"></p></section></form></div></div></section>
+  </main>
+  <div data-site-footer></div>
+  <script type="module" src="../assets/js/main.js"></script>
+  <script type="module" src="../assets/js/event-request.js"></script>
+</body>
+</html>

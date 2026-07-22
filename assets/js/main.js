@@ -43,6 +43,7 @@ if (headerTarget) {
           </details>
           ${link("Shows", "/shows/", "shows")}
           ${link("Song List", "/song-list/", "songs")}
+          ${link("Reviews", "/reviews/", "reviews")}
           ${link("Pricing", "/pricing/", "pricing")}
           ${link("Book Us", "/contact/", "contact", "nav-cta")}
         </nav>
@@ -75,12 +76,13 @@ if (footerTarget) {
             <h3>Listen & connect</h3>
             <p><a href="${resolveSitePath("/shows/")}">Upcoming shows</a></p>
             <p><a href="${resolveSitePath("/song-list/")}">Search the song list</a></p>
+            <p><a href="${resolveSitePath("/reviews/")}">Reviews</a></p>
             <p><a href="${resolveSitePath("/live/")}">At the Show</a></p>
             <p><a href="https://www.facebook.com/AChangeOfPlans419" target="_blank" rel="noreferrer">Facebook</a> · <a href="https://www.instagram.com/AChangeofPlansduo" target="_blank" rel="noreferrer">Instagram</a></p>
             <a class="button button-primary footer-cta" href="${resolveSitePath("/contact/")}">Check Availability</a>
           </div>
         </div>
-        <div class="footer-utility"><a href="${resolveSitePath("/about/")}">About</a><a href="${resolveSitePath("/contact/")}">Contact</a></div>
+        <div class="footer-utility"><a href="${resolveSitePath("/about/")}">About</a><a href="${resolveSitePath("/reviews/")}">Reviews</a><a href="${resolveSitePath("/contact/")}">Contact</a></div>
         <p class="footer-legal">&copy; <span data-current-year></span> A Change Of Plans.</p>
       </div>
     </footer>`;

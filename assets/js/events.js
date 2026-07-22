@@ -2,7 +2,7 @@ const eventsContainer = document.querySelector("[data-events-list]");
 const summaryTarget = document.querySelector("[data-events-summary]");
 const scheduleToggle = document.querySelector("[data-schedule-toggle]");
 const scheduleSection = document.querySelector("[data-schedule-section]");
-const collapsedEventCount = 3;
+const collapsedEventCount = Math.max(1, Number(eventsContainer?.dataset.collapsedCount) || 3);
 
 const escapeHtml = (value = "") => String(value)
   .replaceAll("&", "&amp;")
@@ -12,8 +12,9 @@ const escapeHtml = (value = "") => String(value)
   .replaceAll("'", "&#039;");
 
 const formatDate = (dateValue) => {
-  const date = new Date(`${dateValue}T12:00:00`);
+  const date = new Date(`${dateValue}T12:00:00-04:00`);
   return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
     weekday: "short",
     month: "short",
     day: "numeric",
@@ -22,15 +23,44 @@ const formatDate = (dateValue) => {
 };
 
 const getTodayKey = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
 };
 
 const getEventHeadline = (event) => event.venue || event.location || event.title || "Venue details coming soon";
-const isPrivateEvent = (event) => /private\s+(?:function|event)/i.test(`${event.title || ""} ${event.description || ""}`);
+const isPrivateEvent = (event) => event.publicEvent === false
+  || event.eventType === "private"
+  || /private\s+(?:function|event)/i.test(`${event.title || ""} ${event.description || ""}`);
+
+const getRequestCloseTime = (event) => {
+  const value = event.requestDeadline || event.startsAt;
+  if (!value) return null;
+  const timestamp = new Date(value).getTime();
+  return Number.isFinite(timestamp) ? timestamp : null;
+};
+
+const getRequestState = (event) => {
+  if (isPrivateEvent(event) || event.publicEvent !== true || event.allowSongRequests !== true) return "disabled";
+  const closesAt = getRequestCloseTime(event);
+  if (closesAt === null) return "disabled";
+  return Date.now() >= closesAt ? "closed" : "open";
+};
+
+const renderRequestAction = (event) => {
+  const state = getRequestState(event);
+  if (state === "disabled") return "";
+  if (state === "closed") return '<p class="request-closed">Song requests for this event are now closed.</p>';
+  const eventName = getEventHeadline(event);
+  const label = event.requestLabel || "Request a Song for This Show";
+  const href = window.resolveSitePath(`request-song/?event=${encodeURIComponent(event.eventId)}`);
+  return `<p class="event-request-action"><a class="button button-secondary" href="${escapeHtml(href)}" aria-label="Request a song for ${escapeHtml(eventName)} on ${escapeHtml(formatDate(event.date))}">${escapeHtml(label)}</a></p>`;
+};
 
 const injectEventSchema = (items) => {
   const publicEvents = items.filter((event) => !isPrivateEvent(event));
@@ -47,7 +77,7 @@ const injectEventSchema = (items) => {
     "@graph": publicEvents.map((event) => ({
       "@type": "MusicEvent",
       name: event.title || "A Change Of Plans live performance",
-      startDate: event.date,
+      startDate: event.startsAt || event.date,
       eventStatus: "https://schema.org/EventScheduled",
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       description: event.description || "Live performance by A Change Of Plans.",
@@ -75,7 +105,7 @@ const renderSummary = (items, category) => {
   const highlights = publicEvents.filter((event) => event !== nextEvent).slice(0, 3);
 
   summaryTarget.innerHTML = `
-    <p class="event-count"><strong>${items.length}</strong> upcoming ${escapeHtml(category)} event${items.length === 1 ? "" : "s"}</p>
+    <p class="event-count"><strong>${items.length}</strong> upcoming show${items.length === 1 ? "" : "s"}</p>
     <article class="schedule-next-show">
       <p class="mini-heading">Next Show</p>
       <dl>
@@ -157,9 +187,10 @@ const renderEvents = async () => {
             <time class="event-date" datetime="${escapeHtml(event.date)}">${escapeHtml(formatDate(event.date))}</time>
             ${privateEvent ? '<span class="private-event-label">Private Event</span>' : ""}
           </div>
-          <h3>${escapeHtml(getEventHeadline(event))}</h3>
-          ${renderDescription(event.description)}
-          <p class="event-time"><strong>Time:</strong> <span>${escapeHtml(event.time)}</span></p>
+          <h3>${privateEvent ? "Private Event" : escapeHtml(getEventHeadline(event))}</h3>
+          ${privateEvent ? "" : renderDescription(event.description)}
+          ${privateEvent ? "" : `<p class="event-time"><strong>Time:</strong> <span>${escapeHtml(event.time)}</span></p>`}
+          ${privateEvent ? "" : renderRequestAction(event)}
         </article>
       `;
     }).join("");
