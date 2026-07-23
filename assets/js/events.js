@@ -101,11 +101,18 @@ const renderSummary = (items, category) => {
   }
 
   const publicEvents = items.filter((event) => !isPrivateEvent(event));
-  const nextEvent = publicEvents[0] || items[0];
+  const nextEvent = publicEvents[0];
+  
+  if (!nextEvent) {
+    // No public events to display
+    summaryTarget.innerHTML = `<p>No upcoming public ${escapeHtml(category)} events are listed right now. Check back soon for new dates.</p>`;
+    return;
+  }
+  
   const highlights = publicEvents.filter((event) => event !== nextEvent).slice(0, 3);
 
   summaryTarget.innerHTML = `
-    <p class="event-count"><strong>${items.length}</strong> upcoming show${items.length === 1 ? "" : "s"}</p>
+    <p class="event-count"><strong>${publicEvents.length}</strong> upcoming show${publicEvents.length === 1 ? "" : "s"}</p>
     <article class="schedule-next-show">
       <p class="mini-heading">Next Show</p>
       <dl>
@@ -179,21 +186,47 @@ const renderEvents = async () => {
       return;
     }
 
-    eventsContainer.innerHTML = items.map((event) => {
-      const privateEvent = isPrivateEvent(event);
+    const publicEvents = items.filter((event) => !isPrivateEvent(event));
+    const privateEvents = items.filter((event) => isPrivateEvent(event));
+
+    let html = publicEvents.map((event) => {
       return `
-        <article class="event-card${privateEvent ? " event-card-private" : ""}">
+        <article class="event-card">
           <div class="event-card-topline">
             <time class="event-date" datetime="${escapeHtml(event.date)}">${escapeHtml(formatDate(event.date))}</time>
-            ${privateEvent ? '<span class="private-event-label">Private Event</span>' : ""}
           </div>
-          <h3>${privateEvent ? "Private Event" : escapeHtml(getEventHeadline(event))}</h3>
-          ${privateEvent ? "" : renderDescription(event.description)}
-          ${privateEvent ? "" : `<p class="event-time"><strong>Time:</strong> <span>${escapeHtml(event.time)}</span></p>`}
-          ${privateEvent ? "" : renderRequestAction(event)}
+          <h3>${escapeHtml(getEventHeadline(event))}</h3>
+          ${renderDescription(event.description)}
+          <p class="event-time"><strong>Time:</strong> <span>${escapeHtml(event.time)}</span></p>
+          ${renderRequestAction(event)}
         </article>
       `;
     }).join("");
+
+    // Add private events section if there are any
+    if (privateEvents.length) {
+      html += `
+        <div class="private-events-section">
+          <h3 class="private-events-heading">Also Booked Privately</h3>
+          ${privateEvents.map((event) => {
+            const categoryLabel = event.eventType && event.eventType !== "private" 
+              ? `<span class="private-event-category">${escapeHtml(event.eventType)}</span>`
+              : "";
+            return `
+              <article class="event-card event-card-private">
+                <div class="event-card-topline">
+                  <time class="event-date" datetime="${escapeHtml(event.date)}">${escapeHtml(formatDate(event.date))}</time>
+                  <span class="private-event-label">Private Event</span>
+                </div>
+                ${categoryLabel}
+              </article>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    eventsContainer.innerHTML = html;
 
     setupScheduleToggle();
   } catch (error) {

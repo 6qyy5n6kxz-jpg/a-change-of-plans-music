@@ -45,7 +45,7 @@ const loadReviews = async () => {
     if (reviewsList) {
       reviewsList.innerHTML = approved.length
         ? approved.map(renderReview).join("")
-        : '<div class="review-empty"><h2>Real experiences will live here.</h2><p>Reviews will be added as guests and event hosts share their experiences and approve them for publication.</p></div>';
+        : '<div class="review-empty"><h2>Reviews will appear here as guests and event hosts share their experiences.</h2><p><a href="#share-review">Share Your Experience</a></p></div>';
     }
 
     if (reviewsPreview) {

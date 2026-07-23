@@ -6,20 +6,30 @@ if (contactForm && contactFeedback) {
   const query = new URLSearchParams(window.location.search);
   const performanceFormat = contactForm.querySelector('select[name="performanceFormat"]');
   const eventType = contactForm.querySelector('[data-event-type]');
+  const eventDateField = contactForm.querySelector('input[name="eventDate"]');
+  const settingField = contactForm.querySelector('select[name="setting"]');
   const estimateField = contactForm.querySelector("[data-estimated-total]");
   const sourcePageField = contactForm.querySelector("[data-source-page]");
 
+  // Set date minimum to today
+  if (eventDateField) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    eventDateField.min = `${year}-${month}-${day}`;
+  }
+
   const requestedService = query.get("services") || "";
   if (performanceFormat) {
-    const soloOption = [...performanceFormat.options].find((option) => /solo/i.test(option.value));
-    if (soloOption) {
-      soloOption.value = "Devin Frank Solo";
-      soloOption.textContent = "Devin Frank Solo (select bookings)";
+    // Support old "A Change Of Plans Solo" query parameter as alias for "Devin Frank Solo"
+    let prefillValue = requestedService;
+    if (/A\s+Change\s+Of\s+Plans\s+Solo/i.test(requestedService)) {
+      prefillValue = "Devin Frank Solo";
     }
-    const formatLabel = performanceFormat.closest("label")?.querySelector("span");
-    if (formatLabel) formatLabel.textContent = "Performance preference *";
-    if (/solo/i.test(requestedService)) performanceFormat.value = "Devin Frank Solo";
-    if (/duo/i.test(requestedService)) performanceFormat.value = "A Change Of Plans Duo";
+    
+    if (/solo/i.test(prefillValue)) performanceFormat.value = "Devin Frank Solo";
+    if (/duo/i.test(prefillValue)) performanceFormat.value = "A Change Of Plans Duo";
   }
 
   const requestedEventType = query.get("eventType") || "";
@@ -44,9 +54,23 @@ if (contactForm && contactFeedback) {
     });
   };
 
+  const updateOutdoorConditional = () => {
+    const outdoorGroup = contactForm.querySelector('[data-conditional="outdoor"]');
+    if (!outdoorGroup || !settingField) return;
+    
+    const settingValue = settingField.value.toLowerCase();
+    const showOutdoorConditional = settingValue.includes("outdoor");
+    outdoorGroup.hidden = !showOutdoorConditional;
+  };
+
   if (eventType) {
     eventType.addEventListener("change", updateConditionalFields);
     updateConditionalFields();
+  }
+
+  if (settingField) {
+    settingField.addEventListener("change", updateOutdoorConditional);
+    updateOutdoorConditional();
   }
 
   if (estimateField && query.has("estimate")) {

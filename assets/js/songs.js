@@ -23,6 +23,30 @@ let visibleSongCount = RESULTS_BATCH_SIZE;
 let allSongs = [];
 let hasExitedFeaturedMode = true;  // Start with featured mode disabled - show all songs with pagination
 
+// Populate live song select (from live.html page)
+const populateLiveSongSelect = async () => {
+  const liveSongSelect = document.querySelector("[data-live-song-select]");
+  if (!liveSongSelect) return;
+
+  try {
+    const response = await fetch(window.resolveSitePath("data/songs.json"));
+    if (!response.ok) return;
+    const payload = await response.json();
+    const songs = Array.isArray(payload.songs) ? payload.songs : [];
+    
+    songs.sort((left, right) => left.title.localeCompare(right.title)).forEach((song) => {
+      const option = document.createElement("option");
+      option.value = `${song.title} — ${song.artist}`;
+      option.textContent = `${song.title} — ${song.artist}`;
+      liveSongSelect.append(option);
+    });
+  } catch (error) {
+    console.error("Unable to populate live song select.", error);
+  }
+};
+
+populateLiveSongSelect();
+
 const normalizeValue = (value) => (value || "").toString().trim().toLowerCase();
 
 const createSongKey = (title, artist) => `${normalizeValue(title)}::${normalizeValue(artist)}`;
