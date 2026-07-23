@@ -96,17 +96,17 @@
       "title": "Elmore Church Of God.",
       "description": "Join us at The Elmore COG every 4th Sunday!"
     },
-    {
-      "eventId": "2026-08-27-sandusky-county-fair",
-      "category": "music",
-      "eventType": "community",
-      "publicEvent": true,
-      "allowSongRequests": false,
-      "date": "2026-08-27",
-      "startsAt": "2026-08-27T13:30:00-04:00",
-      "time": "1:30 PM",
-      "title": "Sandusky County Fair",
-      "description": "Our debut at the Sandusky County Fair!"
-    }
+  {
+  "eventId": "2026-08-27-sandusky-county-fair",
+  "category": "music",
+  "eventType": "community",
+  "publicEvent": true,
+  "allowSongRequests": false,
+  "date": "2026-08-27",
+  "startsAt": "2026-08-27T13:30:00-04:00",
+  "time": "1:30 PM - 3:00 PM",
+  "title": "2026 Log Cabin Entertainment at the Sandusky County Fair",
+  "description": "Join A Change Of Plans at the Log Cabin for a special afternoon celebrating the legendary women of country music, along with familiar favorites from the 1950s through the 1980s. This performance is included with paid admission to the Sandusky County Fair."
+}
   ]
 }
