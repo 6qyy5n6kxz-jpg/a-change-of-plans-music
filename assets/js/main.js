@@ -32,6 +32,7 @@ if (headerTarget) {
         <nav class="site-nav" id="site-nav" aria-label="Main navigation" hidden>
           ${link("Home", "/", "home")}
           ${link("About", "/about/", "about")}
+          ${link("Signature Shows", "/signature-shows/", "signature-shows")}
           <details class="nav-group"${["weddings", "restaurants", "festivals", "churches"].includes(page) ? " open" : ""}>
             <summary>Events</summary>
             <div class="nav-submenu">
@@ -74,6 +75,7 @@ if (footerTarget) {
           </div>
           <div>
             <h3>Listen & connect</h3>
+            <p><a href="${resolveSitePath("/signature-shows/")}">Signature Shows</a></p>
             <p><a href="${resolveSitePath("/shows/")}">Upcoming shows</a></p>
             <p><a href="${resolveSitePath("/song-list/")}">Search the song list</a></p>
             <p><a href="${resolveSitePath("/reviews/")}">Reviews</a></p>

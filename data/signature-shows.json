@@ -1,0 +1,159 @@
+{
+  "shows": [
+    {
+      "id": "women-of-country",
+      "slug": "women-of-country",
+      "title": "Women of Country",
+      "featured": true,
+      "shortDescription": "A celebration of the women who shaped country music, from timeless country classics to modern favorites.",
+      "longDescription": "Women of Country showcases the most influential women in country music. This show celebrates strong lead vocals and familiar choruses from artists like Dolly Parton, Shania Twain, Miranda Lambert, The Chicks, Carrie Underwood, and Lainey Wilson. Each performance brings the energy, storytelling, and musicianship these artists are known for.",
+      "artistExamples": "Dolly Parton, Shania Twain, Miranda Lambert, The Chicks, Carrie Underwood, Lainey Wilson",
+      "idealFor": [
+        "Wineries",
+        "Festivals",
+        "Community concert series",
+        "Themed dinners",
+        "Women-focused celebrations",
+        "Fairs",
+        "Private events"
+      ],
+      "performanceFormats": [
+        "Acoustic duo",
+        "Piano and vocal presentation",
+        "Expanded performance with selected guest musicians when arranged in advance"
+      ],
+      "metaTitle": "Women of Country Live Show | A Change Of Plans",
+      "metaDescription": "Book Women of Country by A Change Of Plans, a themed live music experience featuring classic and modern country favorites for wineries, festivals and events in Northwest Ohio.",
+      "imageAlt": "Women of Country Signature Show by A Change Of Plans"
+    },
+    {
+      "id": "90s-acoustic-rewind",
+      "slug": "90s-acoustic-rewind",
+      "title": "90s Acoustic Rewind",
+      "featured": true,
+      "shortDescription": "The songs you remember from the 1990s, reimagined through acoustic guitar, piano and vocals.",
+      "longDescription": "90s Acoustic Rewind brings back the recognizable hits from the 1990s with fresh acoustic and piano arrangements. This show features favorite songs from the era's alternative, pop, rock, and singer-songwriter traditions. Expect to hear familiar favorites from Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, and Sheryl Crow. Each performance captures the nostalgia without being a costume party—it's about the songs that defined a generation, reimagined in A Change Of Plans' style.",
+      "artistExamples": "Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, Sheryl Crow",
+      "idealFor": [
+        "Breweries and wineries",
+        "Festivals",
+        "Alumni events",
+        "Community concert series",
+        "Private parties",
+        "Casual corporate events"
+      ],
+      "performanceFormats": [
+        "Acoustic duo with guitar and vocals",
+        "Piano and vocal arrangement",
+        "Expanded presentation with guest musicians by arrangement"
+      ],
+      "metaTitle": "90s Acoustic Rewind | A Change Of Plans",
+      "metaDescription": "Relive familiar 1990s favorites with 90s Acoustic Rewind, a live acoustic and piano show from A Change Of Plans serving Northwest Ohio and Southeast Michigan.",
+      "imageAlt": "90s Acoustic Rewind Signature Show by A Change Of Plans"
+    },
+    {
+      "id": "piano-bar-classics",
+      "slug": "piano-bar-classics",
+      "title": "Piano Bar Classics",
+      "featured": false,
+      "shortDescription": "A lively, request-friendly evening of piano favorites, familiar choruses and audience singalongs.",
+      "longDescription": "Piano Bar Classics brings the interactive spirit of a piano bar to your event. This show centers on piano-driven favorites with audience requests (chosen from an available songbook), storytelling, and interactive singalongs. Occasional acoustic guitar adds variety. Musical references include Billy Joel, Elton John, Journey, Neil Diamond, The Beatles, and John Mellencamp—familiar crowd favorites perfect for bringing people together.",
+      "artistExamples": "Billy Joel, Elton John, Journey, Neil Diamond, The Beatles, John Mellencamp",
+      "idealFor": [
+        "Wineries",
+        "Restaurants",
+        "Private parties",
+        "Fundraisers",
+        "Corporate events",
+        "Ticketed themed evenings"
+      ],
+      "performanceFormats": [
+        "Interactive piano show with audience requests",
+        "Piano and vocals with storytelling",
+        "Piano and guitar combination set"
+      ],
+      "metaTitle": "Piano Bar Classics Live Show | A Change Of Plans",
+      "metaDescription": "Piano Bar Classics is an interactive live music experience featuring requests, singalongs and familiar piano favorites for events in Northwest Ohio.",
+      "imageAlt": "Piano Bar Classics Signature Show by A Change Of Plans"
+    },
+    {
+      "id": "songs-everyone-knows",
+      "slug": "songs-everyone-knows",
+      "title": "Songs Everyone Knows",
+      "featured": true,
+      "shortDescription": "A crowd-friendly show filled with songs people recognize within the first few notes.",
+      "longDescription": "Songs Everyone Knows is the broadest Signature Show—a celebration of the most recognizable songs spanning several decades and genres. This show emphasizes familiar melodies, memorable choruses, and audience participation. It's about rediscovering songs guests may not have heard in years, creating moments of connection across generations. From pop and rock to country and classics, each song is chosen for its universal appeal and the joy it brings.",
+      "artistExamples": "Multi-genre selection of universally recognized artists",
+      "idealFor": [
+        "Festivals",
+        "Community concerts",
+        "Fairs",
+        "Corporate events",
+        "Wineries",
+        "Private celebrations",
+        "Mixed-age audiences"
+      ],
+      "performanceFormats": [
+        "Full duo performance",
+        "Expanded performance with guest musicians",
+        "Solo presentation"
+      ],
+      "metaTitle": "Songs Everyone Knows Live Show | A Change Of Plans",
+      "metaDescription": "Songs Everyone Knows is a live singalong experience packed with familiar favorites for festivals, wineries, community events and private celebrations.",
+      "imageAlt": "Songs Everyone Knows Signature Show by A Change Of Plans"
+    },
+    {
+      "id": "americana-country-roads",
+      "slug": "americana-country-roads",
+      "title": "Americana & Country Roads",
+      "featured": false,
+      "shortDescription": "Country, folk and roots-inspired favorites built around storytelling, harmonies and familiar choruses.",
+      "longDescription": "Americana & Country Roads blends acoustic country, folk, classic rock, and Americana influences into a warm, organic experience. This show celebrates the stories behind the songs, with artists like John Denver, Tom Petty, Johnny Cash, The Eagles, and Chris Stapleton. The tone is approachable for both intimate listening rooms and outdoor community gatherings, with emphasis on harmonies, authenticity, and connection.",
+      "artistExamples": "John Denver, Tom Petty, Johnny Cash, The Eagles, Chris Stapleton",
+      "idealFor": [
+        "Wineries",
+        "Outdoor festivals",
+        "Community concert series",
+        "Fairs",
+        "Farm and barn events",
+        "Churches and community gatherings",
+        "Private celebrations"
+      ],
+      "performanceFormats": [
+        "Acoustic duo",
+        "Piano and vocal presentation",
+        "Expanded performance with guest musicians by arrangement"
+      ],
+      "metaTitle": "Americana & Country Roads | A Change Of Plans",
+      "metaDescription": "Book Americana & Country Roads, a live acoustic show featuring country, folk and roots-inspired favorites throughout Northwest Ohio and Southeast Michigan.",
+      "imageAlt": "Americana & Country Roads Signature Show by A Change Of Plans"
+    },
+    {
+      "id": "home-for-the-holidays",
+      "slug": "home-for-the-holidays",
+      "title": "Home for the Holidays",
+      "featured": false,
+      "shortDescription": "A warm seasonal performance featuring Christmas standards, contemporary holiday favorites and familiar singalongs.",
+      "longDescription": "Home for the Holidays brings warmth and celebration to your seasonal event. This flexible holiday show features Christmas standards and contemporary holiday favorites, perfect for churches, restaurants, wineries, corporate celebrations, and private parties. The setlist adapts to your audience and venue, ensuring the right mood for your specific occasion.",
+      "artistExamples": "Holiday classics and contemporary Christmas music",
+      "idealFor": [
+        "Holiday parties",
+        "Churches",
+        "Wineries",
+        "Community celebrations",
+        "Tree-lighting events",
+        "Restaurants",
+        "Corporate gatherings",
+        "Private events"
+      ],
+      "performanceFormats": [
+        "Full duo performance",
+        "Piano-focused holiday set",
+        "Acoustic guitar and vocals arrangement"
+      ],
+      "metaTitle": "Holiday Live Music | A Change Of Plans",
+      "metaDescription": "Celebrate the season with Home for the Holidays, a live Christmas music experience available for churches, wineries, parties and community events in Northwest Ohio.",
+      "imageAlt": "Home for the Holidays Signature Show by A Change Of Plans"
+    }
+  ]
+}
