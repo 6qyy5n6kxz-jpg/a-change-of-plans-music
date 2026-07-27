@@ -5,7 +5,7 @@
       "category": "music",
       "eventType": "venue",
       "publicEvent": true,
-      "allowSongRequests": false,
+      "allowSongRequests": true,
       "date": "2026-07-31",
       "startsAt": "2026-07-31T18:00:00-04:00",
       "time": "6:00 PM - 9:00 PM",
@@ -77,7 +77,7 @@
       "category": "music",
       "eventType": "restaurant-bar",
       "publicEvent": true,
-      "allowSongRequests": false,
+      "allowSongRequests": true,
       "date": "2026-08-22",
       "startsAt": "2026-08-22T18:00:00-04:00",
       "time": "6:00 PM - 9:00 PM",
@@ -107,6 +107,18 @@
   "time": "1:30 PM - 3:00 PM",
   "title": "2026 Log Cabin Entertainment at the Sandusky County Fair",
   "description": "Join A Change Of Plans at the Log Cabin for a special afternoon celebrating the legendary women of country music, along with familiar favorites from the 1950s through the 1980s. This performance is included with paid admission to the Sandusky County Fair."
+},
+{
+  "eventId": "2026-09-04-perfect-imperfections",
+  "category": "music",
+  "eventType": "venue",
+  "publicEvent": true,
+  "allowSongRequests": false,
+  "date": "2026-09-04",
+  "startsAt": "2026-09-04T19:00:00-04:00",
+  "time": "7:00 PM - 9:00 PM",
+  "title": "Perfect Imperfections Boutique & Design",
+  "description": "Join A Change Of Plans for an intimate evening of live music at Perfect Imperfections Boutique & Design in Oak Harbor. Enjoy a mix of classic rock, country, pop, and timeless favorites while supporting a wonderful local small business."
 }
   ]
 }
