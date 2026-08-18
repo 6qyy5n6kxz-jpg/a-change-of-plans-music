@@ -78,6 +78,63 @@ body[data-page] {
 .positioning-strip { text-align: center; }
 .positioning-strip .section-heading { max-width: 58rem; margin: 0 auto; }
 .positioning-strip h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+/* Homepage repertoire preview */
+.repertoire-preview {
+  overflow: hidden;
+}
+
+.repertoire-preview .section-heading {
+  max-width: 54rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.artist-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .65rem;
+  max-width: 70rem;
+  margin: 2rem auto 0;
+}
+
+.artist-cloud span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 6px 18px rgba(38, 41, 39, .06);
+  color: var(--brand-dark);
+  font-weight: 800;
+}
+
+.artist-cloud span:nth-child(3n + 1) {
+  font-family: "Playfair Display", serif;
+  font-size: 1.08rem;
+}
+
+.repertoire-sample {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .45rem .7rem;
+  max-width: 58rem;
+  margin: 1.75rem auto 0;
+  color: var(--muted);
+  text-align: center;
+  font-weight: 600;
+}
+
+.repertoire-sample span[aria-hidden="true"] {
+  color: var(--accent);
+}
+
+.repertoire-preview .button-row {
+  margin-top: 1.75rem;
+}
 
 .benefit-grid,
 .event-category-grid,
