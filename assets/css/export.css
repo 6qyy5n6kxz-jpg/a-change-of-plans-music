@@ -516,6 +516,235 @@ body[data-show-theme="home-for-the-holidays"] .page-hero-music {
   }
 }
 
+/* Signature Shows overview catalog */
+body[data-page="signature-shows"] .page-hero-music {
+  background: linear-gradient(135deg, rgba(33, 61, 53, .98), rgba(130, 95, 47, .94));
+  color: #fff;
+}
+
+body[data-page="signature-shows"] .page-hero-music h1 {
+  color: #fff;
+}
+
+body[data-page="signature-shows"] .page-hero-music .breadcrumbs,
+body[data-page="signature-shows"] .page-hero-music .eyebrow,
+body[data-page="signature-shows"] .page-hero-music p {
+  color: rgba(255, 255, 255, .82);
+}
+
+.signature-hero-actions {
+  margin-top: 1.5rem;
+}
+
+body[data-page="signature-shows"] .button-on-dark {
+  border-color: rgba(255, 255, 255, .55);
+  background: transparent;
+  color: #fff;
+}
+
+body[data-page="signature-shows"] .button-on-dark:hover,
+body[data-page="signature-shows"] .button-on-dark:focus-visible {
+  border-color: #fff;
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+}
+
+.signature-catalog-heading {
+  max-width: 52rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.signature-catalog .signature-show-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.signature-catalog .show-card {
+  min-width: 0;
+}
+
+.show-card-poster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 15rem;
+  padding: 2rem;
+  overflow: hidden;
+  color: #fff;
+}
+
+.show-card-poster::after {
+  content: "";
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  right: -6rem;
+  bottom: -8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  pointer-events: none;
+}
+
+.show-card-poster > * {
+  position: relative;
+  z-index: 1;
+}
+
+.show-card-kicker {
+  margin: 0 0 .55rem;
+  color: rgba(255, 255, 255, .78);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .14em !important;
+  text-transform: uppercase;
+}
+
+.show-card-poster .show-card-title {
+  margin: 0;
+  max-width: 28rem;
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.show-card-experience {
+  margin: .9rem 0 0;
+  color: rgba(255, 255, 255, .86);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .07em !important;
+  text-transform: uppercase;
+}
+
+.signature-catalog .show-card-content {
+  gap: 1.2rem;
+  padding: 1.6rem;
+}
+
+.signature-catalog .show-description {
+  flex-grow: 0;
+  font-size: 1rem;
+}
+
+.show-card-highlights {
+  display: grid;
+  gap: .6rem;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+}
+
+.show-card-highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--brand-dark);
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+.show-card-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: .38rem;
+  height: .38rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.show-card-fit {
+  margin-top: auto;
+}
+
+.show-card-fit .mini-heading {
+  margin-bottom: .6rem;
+}
+
+.show-card-button {
+  width: 100%;
+  margin-top: .25rem;
+  text-align: center;
+}
+
+.show-card[data-show-card-theme="women-of-country"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(91, 48, 63, .98), rgba(49, 86, 75, .96));
+}
+
+.show-card[data-show-card-theme="90s-acoustic-rewind"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(48, 66, 91, .98), rgba(49, 86, 75, .96));
+}
+
+.show-card[data-show-card-theme="piano-bar-classics"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(46, 45, 43, .99), rgba(130, 95, 47, .96));
+}
+
+.show-card[data-show-card-theme="songs-everyone-knows"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(49, 86, 75, .99), rgba(130, 95, 47, .93));
+}
+
+.show-card[data-show-card-theme="americana-country-roads"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(91, 68, 48, .98), rgba(49, 86, 75, .95));
+}
+
+.show-card[data-show-card-theme="home-for-the-holidays"] .show-card-poster {
+  background: linear-gradient(135deg, rgba(67, 86, 72, .99), rgba(112, 54, 54, .95));
+}
+
+.signature-guide-heading {
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.signature-guide-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.signature-guide-grid article {
+  min-width: 0;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .55);
+}
+
+.signature-guide-grid h3 {
+  margin: .15rem 0 .65rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+}
+
+.signature-guide-grid p:not(.mini-heading) {
+  color: var(--muted);
+}
+
+.signature-guide-grid a {
+  color: var(--brand);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+.signature-guide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1rem;
+}
+
+@media (min-width: 760px) {
+  .signature-catalog .signature-show-grid,
+  .signature-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .form-intro-note { padding: 1rem 1.25rem; border-left: 4px solid var(--accent); background: rgba(255,255,255,.55); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 .form-section-description { margin-top: -.4rem; color: var(--muted); }
 .conditional-fields { grid-column: 1 / -1; padding-top: .25rem; }
