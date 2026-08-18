@@ -8,6 +8,8 @@ if (document.readyState === 'loading') {
 function initializeForm() {
   const contactForm = document.querySelector("[data-contact-form]");
   const contactFeedback = document.querySelector("[data-contact-feedback]");
+  const bookingSuccess = document.querySelector("[data-booking-success]");
+  const bookingSuccessHeading = document.querySelector("[data-booking-success-heading]");
 
   if (!contactForm || !contactFeedback) return;
 
@@ -17,10 +19,11 @@ function initializeForm() {
   const eventType = contactForm.querySelector('[data-event-type]');
   const eventDateField = contactForm.querySelector('input[name="eventDate"]');
   const settingField = contactForm.querySelector('select[name="setting"]');
+  const signatureShowSelect = contactForm.querySelector("[data-signature-show-select]");
+  const selectedShowNotice = contactForm.querySelector("[data-selected-show-notice]");
+  const selectedShowName = contactForm.querySelector("[data-selected-show-name]");
   const estimateField = contactForm.querySelector("[data-estimated-total]");
   const sourcePageField = contactForm.querySelector("[data-source-page]");
-  const selectedShowField = contactForm.querySelector("[data-selected-show]");
-  const selectedShowSummary = contactForm.querySelector("[data-selected-show-summary]");
 
   // Set date minimum to today
   if (eventDateField) {
@@ -42,12 +45,13 @@ function initializeForm() {
     if (/duo/i.test(prefillValue)) performanceFormat.value = "A Change Of Plans Duo";
   }
 
-  // Resolve Signature Show context from the canonical show data.
+  // Populate Signature Shows and resolve any valid show prefill.
   const requestedShow = query.get("show") || "";
-  const requestedShowPromise = populateRequestedShow({
+  const signatureShowsPromise = loadSignatureShows({
     requestedShow,
-    selectedShowField,
-    selectedShowSummary
+    signatureShowSelect,
+    selectedShowNotice,
+    selectedShowName
   });
 
   // Handle event type prefilling from query parameter
@@ -116,10 +120,18 @@ function initializeForm() {
       return;
     }
 
-    await requestedShowPromise;
+    const signatureShows = await signatureShowsPromise;
 
     const formData = new FormData(contactForm);
-    formData.append("_subject", `A Change Of Plans booking inquiry: ${formData.get("eventType") || "New event"}`);
+    const eventDescription = formData.get("eventType") || "New event";
+    const signatureShowDescription = getSignatureShowDescription(
+      formData.get("signatureShow"),
+      signatureShows
+    );
+    const subjectContext = signatureShowDescription
+      ? `${signatureShowDescription} — ${eventDescription}`
+      : eventDescription;
+    formData.append("_subject", `A Change Of Plans inquiry: ${subjectContext}`);
     formData.append("_replyto", `${formData.get("email") || ""}`);
 
     if (submitButton) {
@@ -150,7 +162,14 @@ function initializeForm() {
       }
 
       contactForm.reset();
-      contactFeedback.textContent = "Thank you. Your inquiry was sent successfully.";
+      contactFeedback.textContent = "";
+      if (bookingSuccess) {
+        contactForm.hidden = true;
+        bookingSuccess.hidden = false;
+        bookingSuccessHeading?.focus();
+      } else {
+        contactFeedback.textContent = "Thank you. Your inquiry was sent successfully.";
+      }
     } catch (error) {
       contactFeedback.textContent = error.message || "There was a problem sending your inquiry. Please try again in a few minutes.";
     } finally {
@@ -162,26 +181,48 @@ function initializeForm() {
   });
 }
 
-async function populateRequestedShow({ requestedShow, selectedShowField, selectedShowSummary }) {
-  if (!requestedShow || !selectedShowField || !selectedShowSummary) return null;
+async function loadSignatureShows({
+  requestedShow,
+  signatureShowSelect,
+  selectedShowNotice,
+  selectedShowName
+}) {
+  if (!signatureShowSelect) return [];
 
   try {
     const response = await fetch(window.resolveSitePath("/data/signature-shows.json"));
-    if (!response.ok) return null;
+    if (!response.ok) throw new Error(`Signature Show data returned ${response.status}`);
 
     const data = await response.json();
-    const show = Array.isArray(data.shows)
-      ? data.shows.find(candidate => candidate.slug === requestedShow)
-      : null;
+    const shows = Array.isArray(data.shows)
+      ? data.shows.filter(show => show && typeof show.slug === "string" && typeof show.title === "string")
+      : [];
 
-    if (!show) return null;
+    shows.forEach(show => {
+      const option = document.createElement("option");
+      option.value = show.slug;
+      option.textContent = show.title;
+      signatureShowSelect.append(option);
+    });
 
-    selectedShowField.value = show.title;
-    selectedShowField.disabled = false;
-    selectedShowSummary.textContent = `Interested in: ${show.title}`;
-    selectedShowSummary.hidden = false;
-    return show;
-  } catch {
-    return null;
+    const selectedShow = shows.find(show => show.slug === requestedShow);
+    if (selectedShow) {
+      signatureShowSelect.value = selectedShow.slug;
+      if (selectedShowNotice && selectedShowName) {
+        selectedShowName.textContent = selectedShow.title;
+        selectedShowNotice.hidden = false;
+      }
+    }
+
+    return shows;
+  } catch (error) {
+    console.warn("Signature Shows could not be loaded; continuing without show options.", error);
+    return [];
   }
+}
+
+function getSignatureShowDescription(selectedValue, shows) {
+  if (selectedValue === "not-sure") return "Signature Show — Help Me Choose";
+  if (!selectedValue || !Array.isArray(shows)) return "";
+  return shows.find(show => show.slug === selectedValue)?.title || "";
 }
