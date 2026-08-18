@@ -357,6 +357,165 @@ body[data-page] {
 .show-sidebar-card p { margin: 0 0 1rem; color: var(--muted); }
 .button-full { width: 100%; display: block; }
 
+/* Signature Show detail identity */
+.page-hero-music {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-music::after {
+  content: "";
+  position: absolute;
+  width: 28rem;
+  height: 28rem;
+  right: -10rem;
+  bottom: -16rem;
+  left: auto;
+  top: auto;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  pointer-events: none;
+}
+
+.page-hero-music .container {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page="signature-show-detail"] .page-hero-music,
+body[data-page="signature-show-detail"] .page-hero-music h1 {
+  color: #fff;
+}
+
+body[data-page="signature-show-detail"] .page-hero-music .breadcrumbs,
+body[data-page="signature-show-detail"] .page-hero-music .eyebrow,
+body[data-page="signature-show-detail"] .page-hero-music .prose-lead {
+  color: rgba(255, 255, 255, .82);
+}
+
+.show-experience-label {
+  display: inline-flex;
+  margin: 1rem 0 0;
+  padding: .5rem .8rem;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  color: inherit;
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .08em !important;
+  text-transform: uppercase;
+}
+
+.show-experience-label:empty {
+  display: none;
+}
+
+.show-experience-strip {
+  display: none;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.show-experience-strip.is-loaded {
+  display: block;
+}
+
+.show-experience-highlights {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.show-experience-highlights li {
+  position: relative;
+  padding: 1rem 0 1rem 1.25rem;
+  color: var(--brand-dark);
+  font-weight: 750;
+}
+
+.show-experience-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.55rem;
+  width: .42rem;
+  height: .42rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.show-main section {
+  padding-top: .25rem;
+}
+
+.show-main .mini-heading {
+  margin-bottom: .45rem;
+  color: var(--brand);
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.show-main [data-show-expectations] p:first-child {
+  margin-top: 0;
+}
+
+.show-main [data-show-expectations] p:last-child {
+  margin-bottom: 0;
+}
+
+/* Individual show accents remain inside the existing brand palette */
+body[data-show-theme="women-of-country"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(91, 48, 63, .96), rgba(49, 86, 75, .96));
+}
+
+body[data-show-theme="90s-acoustic-rewind"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(48, 66, 91, .97), rgba(49, 86, 75, .96));
+}
+
+body[data-show-theme="piano-bar-classics"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(46, 45, 43, .98), rgba(130, 95, 47, .96));
+}
+
+body[data-show-theme="songs-everyone-knows"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(49, 86, 75, .98), rgba(130, 95, 47, .92));
+}
+
+body[data-show-theme="americana-country-roads"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(91, 68, 48, .97), rgba(49, 86, 75, .94));
+}
+
+body[data-show-theme="home-for-the-holidays"] .page-hero-music {
+  background:
+    linear-gradient(135deg, rgba(67, 86, 72, .98), rgba(112, 54, 54, .94));
+}
+
+@media (min-width: 680px) {
+  .show-experience-highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .show-experience-highlights li {
+    padding: 1.15rem 1.5rem 1.15rem 2rem;
+  }
+
+  .show-experience-highlights li + li {
+    border-left: 1px solid var(--line);
+  }
+
+  .show-experience-highlights li::before {
+    left: .8rem;
+    top: 1.7rem;
+  }
+}
+
 .form-intro-note { padding: 1rem 1.25rem; border-left: 4px solid var(--accent); background: rgba(255,255,255,.55); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 .form-section-description { margin-top: -.4rem; color: var(--muted); }
 .conditional-fields { grid-column: 1 / -1; padding-top: .25rem; }

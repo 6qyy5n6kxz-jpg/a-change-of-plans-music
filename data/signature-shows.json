@@ -6,8 +6,18 @@
       "title": "Women of Country",
       "featured": true,
       "shortDescription": "A celebration of the women who shaped country music, from timeless country classics to modern favorites.",
+      "experienceLabel": "Country • Storytelling • Featured Vocals",
+      "experienceHighlights": [
+        "Kendra-forward lead vocals",
+        "Classic and modern country favorites",
+        "Big choruses built for singing along"
+      ],
+      "expectationParagraphs": [
+        "Women of Country puts the spotlight on songs made famous by some of country music’s most recognizable female voices. Kendra takes a featured role throughout the show, backed by piano, acoustic guitar, harmonies, and arrangements shaped around the strengths of A Change Of Plans.",
+        "The set can move from intimate storytelling songs to upbeat country favorites, making the show equally comfortable at a winery, community concert, themed dinner, festival, or private event."
+      ],
       "longDescription": "Women of Country celebrates the voices, stories, and songs that have shaped country music across generations. Built around Kendra's featured lead vocals, the show moves from timeless country favorites to modern hits with arrangements centered on piano, acoustic guitar, and strong vocal performances.",
-"artistExamples": "Dolly Parton, Reba McEntire, Miranda Lambert, Carrie Underwood, Kelsea Ballerini, Lainey Wilson",
+      "artistExamples": "Dolly Parton, Reba McEntire, Miranda Lambert, Carrie Underwood, Kelsea Ballerini, Lainey Wilson",
       "idealFor": [
         "Wineries",
         "Festivals",
@@ -32,8 +42,18 @@
       "title": "90s Acoustic Rewind",
       "featured": true,
       "shortDescription": "The songs you remember from the 1990s, reimagined through acoustic guitar, piano and vocals.",
+      "experienceLabel": "90s • Alternative • Nostalgia",
+      "experienceHighlights": [
+        "Songs people still know every word to",
+        "Acoustic guitar and piano reworkings",
+        "90s nostalgia without the costume-party gimmick"
+      ],
+      "expectationParagraphs": [
+        "90s Acoustic Rewind is built around the songs that seemed to be everywhere in the 1990s. Alternative rock, pop, and radio favorites are rearranged for acoustic guitar, piano, and two lead vocalists while keeping the hooks and choruses that made them memorable.",
+        "The result feels nostalgic without becoming a tribute act or theme-party caricature. It is designed for audiences who want to hear familiar songs from the era presented in the A Change Of Plans style."
+      ],
       "longDescription": "90s Acoustic Rewind brings back the songs that seemed to be everywhere in the 1990s, reworked around acoustic guitar, piano, and two lead vocalists. Alternative rock, pop, and radio favorites become an audience-friendly nostalgia show built for people who still know the words decades later.",
-"artistExamples": "Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, Counting Crows",
+      "artistExamples": "Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, Counting Crows",
       "idealFor": [
         "Breweries and wineries",
         "Festivals",
@@ -57,8 +77,18 @@
       "title": "Piano Bar Classics",
       "featured": false,
       "shortDescription": "A lively, request-friendly evening of piano favorites, familiar choruses and audience singalongs.",
+      "experienceLabel": "Piano • Requests • Singalongs",
+      "experienceHighlights": [
+        "Piano-led familiar favorites",
+        "Audience requests from the available songbook",
+        "Interactive choruses and singalong moments"
+      ],
+      "expectationParagraphs": [
+        "Piano Bar Classics brings the interactive energy of a piano bar into the A Change Of Plans format. The piano stays at the center of the show, with familiar favorites, audience requests from the available songbook, stories, and songs chosen for their ability to bring a room together.",
+        "This is not presented as a traditional dueling-piano show. It is a more flexible piano-driven experience that can stay relaxed and conversational or build into a lively singalong depending on the venue and audience."
+      ],
       "longDescription": "Piano Bar Classics brings the interactive spirit of a piano bar to your event without trying to imitate a traditional dueling-piano show. Piano-driven favorites, audience requests from the available songbook, familiar choruses, and occasional acoustic guitar create a relaxed, interactive night built around songs people want to sing along with.",
-"artistExamples": "Billy Joel, Elton John, Neil Diamond, The Beatles, Carole King, John Lennon",
+      "artistExamples": "Billy Joel, Elton John, Neil Diamond, The Beatles, Carole King, John Lennon",
       "idealFor": [
         "Wineries",
         "Restaurants",
@@ -82,6 +112,16 @@
       "title": "Songs Everyone Knows",
       "featured": true,
       "shortDescription": "A crowd-friendly show filled with songs people recognize within the first few notes.",
+      "experienceLabel": "Cross-Genre • High Recognition • Crowd Friendly",
+      "experienceHighlights": [
+        "Songs recognized within the first few notes",
+        "Multiple decades and genres in one show",
+        "Built around audience participation"
+      ],
+      "expectationParagraphs": [
+        "Songs Everyone Knows follows one simple rule: the audience should recognize the music quickly. The show moves across country, classic rock, pop, 90s favorites, and singalong staples instead of staying inside one genre or decade.",
+        "It is especially well suited to festivals, fairs, community concerts, wineries, and mixed-age events where the goal is broad appeal. The focus is on memorable choruses, familiar melodies, and songs people may be surprised to realize they still know every word to."
+      ],
       "longDescription": "Songs Everyone Knows is built around one simple rule: the audience should recognize the song within the first few notes. The show moves across decades and genres—from country and classic rock to 90s favorites and singalong staples—with an emphasis on memorable choruses, audience participation, and songs people may not realize they still know every word to.",
       "artistExamples": "Tom Petty, Dolly Parton, Fleetwood Mac, The Beatles, Johnny Cash, Neil Diamond, John Denver, Green Day",
       "idealFor": [
@@ -108,6 +148,16 @@
       "title": "Americana & Country Roads",
       "featured": false,
       "shortDescription": "Country, folk and roots-inspired favorites built around storytelling, harmonies and familiar choruses.",
+      "experienceLabel": "Americana • Roots • Harmonies",
+      "experienceHighlights": [
+        "Story-driven country and folk favorites",
+        "Acoustic arrangements and vocal harmonies",
+        "Equally at home indoors or outdoors"
+      ],
+      "expectationParagraphs": [
+        "Americana & Country Roads leans into the storytelling side of the A Change Of Plans repertoire. Country, folk, classic rock, and roots-inspired favorites are presented with acoustic instrumentation, piano, vocal harmonies, and an emphasis on the songs themselves.",
+        "The atmosphere can work as an intimate listening-room performance or a relaxed outdoor community show, making it a strong fit when an event needs familiar music without feeling overly polished, loud, or production-heavy."
+      ],
       "longDescription": "Americana & Country Roads is built for the kind of setting where the songs, stories, and harmonies matter. Country, folk, classic rock, and roots-inspired favorites come together in a warm acoustic show featuring artists such as John Denver, Tom Petty, Johnny Cash, the Eagles, and Chris Stapleton. It works equally well as a listening-room performance or a relaxed outdoor community show.",
       "artistExamples": "John Denver, Tom Petty, Johnny Cash, The Eagles, Chris Stapleton",
       "idealFor": [
@@ -134,6 +184,16 @@
       "title": "Home for the Holidays",
       "featured": false,
       "shortDescription": "A warm seasonal performance featuring Christmas standards, contemporary holiday favorites and familiar singalongs.",
+      "experienceLabel": "Holiday • Seasonal • Singalong",
+      "experienceHighlights": [
+        "Christmas standards and modern favorites",
+        "Flexible sacred or secular programming",
+        "Warm, familiar seasonal singalongs"
+      ],
+      "expectationParagraphs": [
+        "Home for the Holidays brings seasonal music into the A Change Of Plans format with Christmas standards, contemporary favorites, and familiar songs designed to create a warm, welcoming atmosphere.",
+        "The program can be shaped around the setting, from churches and community celebrations to wineries, restaurants, corporate gatherings, and private parties. Song selection can lean more sacred, more secular, or blend both when appropriate."
+      ],
       "longDescription": "Home for the Holidays brings warmth and celebration to your seasonal event. This flexible holiday show features Christmas standards and contemporary holiday favorites, perfect for churches, restaurants, wineries, corporate celebrations, and private parties. The setlist adapts to your audience and venue, ensuring the right mood for your specific occasion.",
       "artistExamples": "Holiday classics and contemporary Christmas music",
       "idealFor": [

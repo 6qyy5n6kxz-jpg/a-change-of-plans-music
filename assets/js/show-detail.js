@@ -17,6 +17,16 @@ const renderIdealFor = (venues) => {
   return venues.map(venue => `<li>${escapeHtml(venue)}</li>`).join("");
 };
 
+const renderExperienceHighlights = (highlights) => {
+  if (!highlights || !Array.isArray(highlights)) return "";
+  return highlights.map(highlight => `<li>${escapeHtml(highlight)}</li>`).join("");
+};
+
+const renderExpectationParagraphs = (paragraphs) => {
+  if (!paragraphs || !Array.isArray(paragraphs)) return "";
+  return paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("");
+};
+
 const loadShowDetail = async () => {
   const showSlug = getShowSlug();
   if (!showSlug) {
@@ -33,6 +43,8 @@ const loadShowDetail = async () => {
       console.error(`Show not found: ${showSlug}`);
       return;
     }
+
+    document.body.dataset.showTheme = show.slug;
 
     // Update meta tags
     document.title = `${show.title} | A Change Of Plans`;
@@ -51,6 +63,24 @@ const loadShowDetail = async () => {
     const shortDescEl = document.querySelector("[data-show-short-description]");
     if (shortDescEl) {
       shortDescEl.textContent = show.shortDescription;
+    }
+
+    const experienceLabelEl = document.querySelector("[data-show-experience-label]");
+    if (experienceLabelEl) {
+      experienceLabelEl.textContent = show.experienceLabel;
+    }
+
+    const experienceHighlightsEl = document.querySelector("[data-show-experience-highlights]");
+    if (experienceHighlightsEl) {
+      experienceHighlightsEl.innerHTML = renderExperienceHighlights(show.experienceHighlights);
+      if (experienceHighlightsEl.children.length) {
+        experienceHighlightsEl.closest(".show-experience-strip")?.classList.add("is-loaded");
+      }
+    }
+
+    const expectationsEl = document.querySelector("[data-show-expectations]");
+    if (expectationsEl) {
+      expectationsEl.innerHTML = renderExpectationParagraphs(show.expectationParagraphs);
     }
 
     const descriptionEl = document.querySelector("[data-show-description]");
