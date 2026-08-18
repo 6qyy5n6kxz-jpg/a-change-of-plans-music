@@ -466,6 +466,40 @@ body[data-page="signature-show-detail"] .page-hero-music .prose-lead {
   margin-bottom: 0;
 }
 
+.related-show-grid {
+  display: grid;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.related-show-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .25rem;
+  padding: .9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .55);
+  text-decoration: none;
+}
+
+.related-show-card:hover,
+.related-show-card:focus-visible {
+  border-color: var(--brand);
+}
+
+.related-show-title {
+  color: var(--brand-dark);
+  font-weight: 800;
+}
+
+.related-show-experience {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
 /* Individual show accents remain inside the existing brand palette */
 body[data-show-theme="women-of-country"] .page-hero-music {
   background:
@@ -498,6 +532,10 @@ body[data-show-theme="home-for-the-holidays"] .page-hero-music {
 }
 
 @media (min-width: 680px) {
+  .related-show-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .show-experience-highlights {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

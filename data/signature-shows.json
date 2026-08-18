@@ -32,8 +32,12 @@
         "Piano and vocal presentation",
         "Expanded performance with selected guest musicians when arranged in advance"
       ],
-      "metaTitle": "Women of Country Live Show | A Change Of Plans",
-      "metaDescription": "Book Women of Country by A Change Of Plans, a themed live music experience featuring classic and modern country favorites for wineries, festivals and events in Northwest Ohio.",
+      "relatedShows": [
+        "songs-everyone-knows",
+        "americana-country-roads"
+      ],
+      "metaTitle": "Women of Country | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book Women of Country by A Change Of Plans, featuring classic and modern country favorites for wineries, festivals and private events across Northwest Ohio.",
       "imageAlt": "Women of Country Signature Show by A Change Of Plans"
     },
     {
@@ -67,8 +71,12 @@
         "Piano and vocal arrangement",
         "Expanded presentation with guest musicians by arrangement"
       ],
-      "metaTitle": "90s Acoustic Rewind | A Change Of Plans",
-      "metaDescription": "Relive familiar 1990s favorites with 90s Acoustic Rewind, a live acoustic and piano show from A Change Of Plans serving Northwest Ohio and Southeast Michigan.",
+      "relatedShows": [
+        "songs-everyone-knows",
+        "piano-bar-classics"
+      ],
+      "metaTitle": "90s Acoustic Rewind | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book 90s Acoustic Rewind by A Change Of Plans, with acoustic takes on familiar 1990s rock and pop for venues and events across Northwest Ohio.",
       "imageAlt": "90s Acoustic Rewind Signature Show by A Change Of Plans"
     },
     {
@@ -102,8 +110,12 @@
         "Piano and vocals with storytelling",
         "Piano and guitar combination set"
       ],
-      "metaTitle": "Piano Bar Classics Live Show | A Change Of Plans",
-      "metaDescription": "Piano Bar Classics is an interactive live music experience featuring requests, singalongs and familiar piano favorites for events in Northwest Ohio.",
+      "relatedShows": [
+        "songs-everyone-knows",
+        "90s-acoustic-rewind"
+      ],
+      "metaTitle": "Piano Bar Classics | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book Piano Bar Classics by A Change Of Plans, an interactive piano-led show with requests and singalongs for Northwest Ohio venues and private events.",
       "imageAlt": "Piano Bar Classics Signature Show by A Change Of Plans"
     },
     {
@@ -138,8 +150,12 @@
         "Expanded performance with guest musicians",
         "Solo presentation"
       ],
-      "metaTitle": "Songs Everyone Knows Live Show | A Change Of Plans",
-      "metaDescription": "Songs Everyone Knows is a live singalong experience packed with familiar favorites for festivals, wineries, community events and private celebrations.",
+      "relatedShows": [
+        "women-of-country",
+        "90s-acoustic-rewind"
+      ],
+      "metaTitle": "Songs Everyone Knows | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book Songs Everyone Knows by A Change Of Plans, a cross-genre singalong show for festivals, fairs, wineries and mixed-age events across Northwest Ohio.",
       "imageAlt": "Songs Everyone Knows Signature Show by A Change Of Plans"
     },
     {
@@ -174,8 +190,12 @@
         "Piano and vocal presentation",
         "Expanded performance with guest musicians by arrangement"
       ],
-      "metaTitle": "Americana & Country Roads | A Change Of Plans",
-      "metaDescription": "Book Americana & Country Roads, a live acoustic show featuring country, folk and roots-inspired favorites throughout Northwest Ohio and Southeast Michigan.",
+      "relatedShows": [
+        "women-of-country",
+        "songs-everyone-knows"
+      ],
+      "metaTitle": "Americana & Country Roads | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book Americana & Country Roads by A Change Of Plans, with acoustic country, folk and roots favorites for Northwest Ohio venues and community events.",
       "imageAlt": "Americana & Country Roads Signature Show by A Change Of Plans"
     },
     {
@@ -211,8 +231,12 @@
         "Piano-focused holiday set",
         "Acoustic guitar and vocals arrangement"
       ],
-      "metaTitle": "Holiday Live Music | A Change Of Plans",
-      "metaDescription": "Celebrate the season with Home for the Holidays, a live Christmas music experience available for churches, wineries, parties and community events in Northwest Ohio.",
+      "relatedShows": [
+        "songs-everyone-knows",
+        "piano-bar-classics"
+      ],
+      "metaTitle": "Home for the Holidays | Signature Live Music Show | A Change Of Plans",
+      "metaDescription": "Book Home for the Holidays by A Change Of Plans, featuring seasonal favorites and singalongs for Northwest Ohio churches, venues and private gatherings.",
       "imageAlt": "Home for the Holidays Signature Show by A Change Of Plans"
     }
   ]

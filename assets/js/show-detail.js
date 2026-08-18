@@ -27,6 +27,25 @@ const renderExpectationParagraphs = (paragraphs) => {
   return paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("");
 };
 
+const renderRelatedShows = (show, shows) => {
+  if (!Array.isArray(show.relatedShows) || !Array.isArray(shows)) return "";
+
+  return show.relatedShows
+    .map(slug => shows.find(candidate => candidate.slug === slug && candidate.slug !== show.slug))
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(relatedShow => {
+      const showUrl = window.resolveSitePath(`/signature-shows/${encodeURIComponent(relatedShow.slug)}/`);
+      return `
+        <a class="related-show-card" href="${escapeHtml(showUrl)}">
+          <span class="related-show-title">${escapeHtml(relatedShow.title)}</span>
+          <span class="related-show-experience">${escapeHtml(relatedShow.experienceLabel)}</span>
+        </a>
+      `;
+    })
+    .join("");
+};
+
 const loadShowDetail = async () => {
   const showSlug = getShowSlug();
   if (!showSlug) {
@@ -35,7 +54,7 @@ const loadShowDetail = async () => {
   }
 
   try {
-    const response = await fetch(window.resolveSitePath(`../data/signature-shows.json`));
+    const response = await fetch(window.resolveSitePath("/data/signature-shows.json"));
     const data = await response.json();
     
     const show = data.shows.find(s => s.slug === showSlug);
@@ -47,9 +66,9 @@ const loadShowDetail = async () => {
     document.body.dataset.showTheme = show.slug;
 
     // Update meta tags
-    document.title = `${show.title} | A Change Of Plans`;
+    document.title = show.metaTitle;
     document.querySelector('meta[name="description"]').content = show.metaDescription;
-    document.querySelector('meta[property="og:title"]').content = show.title;
+    document.querySelector('meta[property="og:title"]').content = show.metaTitle;
     document.querySelector('meta[property="og:description"]').content = show.metaDescription;
     document.querySelector('link[rel="canonical"]').href = `https://achangeofplansmusic.com/signature-shows/${show.slug}/`;
     document.querySelector('meta[property="og:url"]').content = `https://achangeofplansmusic.com/signature-shows/${show.slug}/`;
@@ -103,6 +122,11 @@ const loadShowDetail = async () => {
       idealForEl.innerHTML = renderIdealFor(show.idealFor);
     }
 
+    const relatedShowsEl = document.querySelector("[data-related-shows]");
+    if (relatedShowsEl) {
+      relatedShowsEl.innerHTML = renderRelatedShows(show, data.shows);
+    }
+
     // Update booking CTA
     const bookingLinks = document.querySelectorAll("a[href*='contact']");
     bookingLinks.forEach(link => {
@@ -126,21 +150,21 @@ const updateShowSchema = (show) => {
   schema.dataset.generatedShowSchema = "";
   schema.textContent = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "MusicEvent",
+    "@type": "Service",
     "name": show.title,
     "description": show.longDescription,
-    "performer": {
-      "@type": "MusicGroup",
+    "serviceType": "Live music performance",
+    "provider": {
+      "@type": ["Organization", "MusicGroup"],
       "@id": "https://achangeofplansmusic.com/#group",
-      "name": "A Change Of Plans"
+      "name": "A Change Of Plans",
+      "url": "https://achangeofplansmusic.com/"
     },
-    "url": `https://achangeofplansmusic.com/signature-shows/${show.slug}/`,
-    "offers": {
-      "@type": "AggregateOffer",
-      "availability": "https://schema.org/PreOrder",
-      "priceCurrency": "USD",
-      "url": "https://achangeofplansmusic.com/contact/"
-    }
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Northwest Ohio"
+    },
+    "url": `https://achangeofplansmusic.com/signature-shows/${show.slug}/`
   });
   document.head.append(schema);
 };

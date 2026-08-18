@@ -19,6 +19,8 @@ function initializeForm() {
   const settingField = contactForm.querySelector('select[name="setting"]');
   const estimateField = contactForm.querySelector("[data-estimated-total]");
   const sourcePageField = contactForm.querySelector("[data-source-page]");
+  const selectedShowField = contactForm.querySelector("[data-selected-show]");
+  const selectedShowSummary = contactForm.querySelector("[data-selected-show-summary]");
 
   // Set date minimum to today
   if (eventDateField) {
@@ -40,52 +42,13 @@ function initializeForm() {
     if (/duo/i.test(prefillValue)) performanceFormat.value = "A Change Of Plans Duo";
   }
 
-  // Handle Signature Show prefilling from query parameter
+  // Resolve Signature Show context from the canonical show data.
   const requestedShow = query.get("show") || "";
-  if (requestedShow) {
-    let signatureShowField = contactForm.querySelector('select[name="signatureShow"]');
-    
-    // If the signature show field doesn't exist, create it
-    if (!signatureShowField) {
-      const performanceFormatField = contactForm.querySelector('select[name="performanceFormat"]');
-      if (performanceFormatField && performanceFormatField.parentElement && performanceFormatField.parentElement.tagName === 'LABEL') {
-        const performanceLabel = performanceFormatField.parentElement;
-        const signatureShowLabel = document.createElement('label');
-        signatureShowLabel.className = performanceLabel.className;
-        signatureShowLabel.innerHTML = `
-          <span>Signature Show</span>
-          <select name="signatureShow">
-            <option value="">Choose one</option>
-            <option>Women of Country</option>
-            <option>90s Acoustic Rewind</option>
-            <option>Piano Bar Classics</option>
-            <option>Songs Everyone Knows</option>
-            <option>Americana & Country Roads</option>
-            <option>Home for the Holidays</option>
-            <option>General A Change Of Plans Performance</option>
-            <option>Not sure yet</option>
-          </select>
-        `;
-        performanceLabel.parentNode.insertBefore(signatureShowLabel, performanceLabel);
-        signatureShowField = contactForm.querySelector('select[name="signatureShow"]');
-      }
-    }
-    
-    // Set the value to the requested show
-    if (signatureShowField) {
-      const showMap = {
-        'women-of-country': 'Women of Country',
-        '90s-acoustic-rewind': '90s Acoustic Rewind',
-        'piano-bar-classics': 'Piano Bar Classics',
-        'songs-everyone-knows': 'Songs Everyone Knows',
-        'americana-country-roads': 'Americana & Country Roads',
-        'home-for-the-holidays': 'Home for the Holidays'
-      };
-      const displayValue = showMap[requestedShow] || requestedShow;
-      const matchingOption = [...signatureShowField.options].find((option) => option.value === displayValue);
-      if (matchingOption) signatureShowField.value = displayValue;
-    }
-  }
+  const requestedShowPromise = populateRequestedShow({
+    requestedShow,
+    selectedShowField,
+    selectedShowSummary
+  });
 
   // Handle event type prefilling from query parameter
   const requestedEventType = query.get("eventType") || "";
@@ -153,6 +116,8 @@ function initializeForm() {
       return;
     }
 
+    await requestedShowPromise;
+
     const formData = new FormData(contactForm);
     formData.append("_subject", `A Change Of Plans booking inquiry: ${formData.get("eventType") || "New event"}`);
     formData.append("_replyto", `${formData.get("email") || ""}`);
@@ -197,3 +162,26 @@ function initializeForm() {
   });
 }
 
+async function populateRequestedShow({ requestedShow, selectedShowField, selectedShowSummary }) {
+  if (!requestedShow || !selectedShowField || !selectedShowSummary) return null;
+
+  try {
+    const response = await fetch(window.resolveSitePath("/data/signature-shows.json"));
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    const show = Array.isArray(data.shows)
+      ? data.shows.find(candidate => candidate.slug === requestedShow)
+      : null;
+
+    if (!show) return null;
+
+    selectedShowField.value = show.title;
+    selectedShowField.disabled = false;
+    selectedShowSummary.textContent = `Interested in: ${show.title}`;
+    selectedShowSummary.hidden = false;
+    return show;
+  } catch {
+    return null;
+  }
+}
