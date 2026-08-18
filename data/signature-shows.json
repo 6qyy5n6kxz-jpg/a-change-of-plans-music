@@ -6,8 +6,8 @@
       "title": "Women of Country",
       "featured": true,
       "shortDescription": "A celebration of the women who shaped country music, from timeless country classics to modern favorites.",
-      "longDescription": "Women of Country showcases the most influential women in country music. This show celebrates strong lead vocals and familiar choruses from artists like Dolly Parton, Shania Twain, Miranda Lambert, The Chicks, Carrie Underwood, and Lainey Wilson. Each performance brings the energy, storytelling, and musicianship these artists are known for.",
-      "artistExamples": "Dolly Parton, Shania Twain, Miranda Lambert, The Chicks, Carrie Underwood, Lainey Wilson",
+      "longDescription": "Women of Country celebrates the voices, stories, and songs that have shaped country music across generations. Built around Kendra's featured lead vocals, the show moves from timeless country favorites to modern hits with arrangements centered on piano, acoustic guitar, and strong vocal performances.",
+"artistExamples": "Dolly Parton, Reba McEntire, Miranda Lambert, Carrie Underwood, Kelsea Ballerini, Lainey Wilson",
       "idealFor": [
         "Wineries",
         "Festivals",
@@ -32,8 +32,8 @@
       "title": "90s Acoustic Rewind",
       "featured": true,
       "shortDescription": "The songs you remember from the 1990s, reimagined through acoustic guitar, piano and vocals.",
-      "longDescription": "90s Acoustic Rewind brings back the recognizable hits from the 1990s with fresh acoustic and piano arrangements. This show features favorite songs from the era's alternative, pop, rock, and singer-songwriter traditions. Expect to hear familiar favorites from Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, and Sheryl Crow. Each performance captures the nostalgia without being a costume party—it's about the songs that defined a generation, reimagined in A Change Of Plans' style.",
-      "artistExamples": "Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, Sheryl Crow",
+      "longDescription": "90s Acoustic Rewind brings back the songs that seemed to be everywhere in the 1990s, reworked around acoustic guitar, piano, and two lead vocalists. Alternative rock, pop, and radio favorites become an audience-friendly nostalgia show built for people who still know the words decades later.",
+"artistExamples": "Alanis Morissette, Matchbox Twenty, Green Day, Blind Melon, The Cranberries, Counting Crows",
       "idealFor": [
         "Breweries and wineries",
         "Festivals",
@@ -57,8 +57,8 @@
       "title": "Piano Bar Classics",
       "featured": false,
       "shortDescription": "A lively, request-friendly evening of piano favorites, familiar choruses and audience singalongs.",
-      "longDescription": "Piano Bar Classics brings the interactive spirit of a piano bar to your event. This show centers on piano-driven favorites with audience requests (chosen from an available songbook), storytelling, and interactive singalongs. Occasional acoustic guitar adds variety. Musical references include Billy Joel, Elton John, Journey, Neil Diamond, The Beatles, and John Mellencamp—familiar crowd favorites perfect for bringing people together.",
-      "artistExamples": "Billy Joel, Elton John, Journey, Neil Diamond, The Beatles, John Mellencamp",
+      "longDescription": "Piano Bar Classics brings the interactive spirit of a piano bar to your event without trying to imitate a traditional dueling-piano show. Piano-driven favorites, audience requests from the available songbook, familiar choruses, and occasional acoustic guitar create a relaxed, interactive night built around songs people want to sing along with.",
+"artistExamples": "Billy Joel, Elton John, Neil Diamond, The Beatles, Carole King, John Lennon",
       "idealFor": [
         "Wineries",
         "Restaurants",
@@ -82,8 +82,8 @@
       "title": "Songs Everyone Knows",
       "featured": true,
       "shortDescription": "A crowd-friendly show filled with songs people recognize within the first few notes.",
-      "longDescription": "Songs Everyone Knows is the broadest Signature Show—a celebration of the most recognizable songs spanning several decades and genres. This show emphasizes familiar melodies, memorable choruses, and audience participation. It's about rediscovering songs guests may not have heard in years, creating moments of connection across generations. From pop and rock to country and classics, each song is chosen for its universal appeal and the joy it brings.",
-      "artistExamples": "Multi-genre selection of universally recognized artists",
+      "longDescription": "Songs Everyone Knows is built around one simple rule: the audience should recognize the song within the first few notes. The show moves across decades and genres—from country and classic rock to 90s favorites and singalong staples—with an emphasis on memorable choruses, audience participation, and songs people may not realize they still know every word to.",
+      "artistExamples": "Tom Petty, Dolly Parton, Fleetwood Mac, The Beatles, Johnny Cash, Neil Diamond, John Denver, Green Day",
       "idealFor": [
         "Festivals",
         "Community concerts",
@@ -108,7 +108,7 @@
       "title": "Americana & Country Roads",
       "featured": false,
       "shortDescription": "Country, folk and roots-inspired favorites built around storytelling, harmonies and familiar choruses.",
-      "longDescription": "Americana & Country Roads blends acoustic country, folk, classic rock, and Americana influences into a warm, organic experience. This show celebrates the stories behind the songs, with artists like John Denver, Tom Petty, Johnny Cash, The Eagles, and Chris Stapleton. The tone is approachable for both intimate listening rooms and outdoor community gatherings, with emphasis on harmonies, authenticity, and connection.",
+      "longDescription": "Americana & Country Roads is built for the kind of setting where the songs, stories, and harmonies matter. Country, folk, classic rock, and roots-inspired favorites come together in a warm acoustic show featuring artists such as John Denver, Tom Petty, Johnny Cash, the Eagles, and Chris Stapleton. It works equally well as a listening-room performance or a relaxed outdoor community show.",
       "artistExamples": "John Denver, Tom Petty, Johnny Cash, The Eagles, Chris Stapleton",
       "idealFor": [
         "Wineries",
