@@ -301,6 +301,19 @@ body[data-page] {
   max-height: 24rem;
   overflow-y: auto;
 }
+.event-song-results.is-suggestions {
+  grid-template-columns: 1fr;
+}
+
+.event-song-results.is-suggestions .event-song-result {
+  min-height: 48px;
+}
+
+@media (min-width: 700px) {
+  .event-song-results.is-suggestions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .event-song-result {
   width: 100%;
   padding: .8rem 1rem;
@@ -317,7 +330,16 @@ body[data-page] {
   border-color: var(--brand);
   background: rgba(49, 86, 75, .06);
 }
-.event-song-picker .helper-text { margin-top: .65rem; }
+.event-song-picker .helper-text {
+  margin-top: .65rem;
+  color: var(--muted);
+}
+
+.event-song-picker .helper-text.has-selection {
+  color: var(--brand-dark);
+  font-weight: 750;
+}
+
 .event-song-suggestions-label { margin: .25rem 0 0; }
 .event-song-no-results { margin: 0; }
 .song-request-success {
@@ -686,6 +708,12 @@ body[data-page="signature-shows"] .button-on-dark:focus-visible {
 
 .signature-catalog .show-card {
   min-width: 0;
+}
+
+.signature-show-field .helper-text {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 500;
 }
 
 .show-card-poster {

@@ -14,7 +14,7 @@ export const initializeSongPicker = ({
   const availableSongs = (Array.isArray(songs) ? songs : [])
     .filter(song => song && typeof song.title === "string" && typeof song.artist === "string")
     .sort((left, right) => left.title.localeCompare(right.title) || left.artist.localeCompare(right.artist));
-  const emptySelectionText = selectionTarget.textContent || "No song selected yet.";
+  const emptySelectionText = "No song selected yet.";
   const suggestedSongs = suggestions
     .map(suggestion => availableSongs.find(song => (
       song.title === suggestion.title && song.artist === suggestion.artist
@@ -24,6 +24,7 @@ export const initializeSongPicker = ({
   const clearSelection = () => {
     hiddenInput.value = "";
     selectionTarget.textContent = emptySelectionText;
+    selectionTarget.classList.remove("has-selection");
     searchInput.setCustomValidity("");
   };
 
@@ -31,15 +32,19 @@ export const initializeSongPicker = ({
     const value = formatSong(song);
     hiddenInput.value = value;
     selectionTarget.textContent = `Selected: ${value}`;
+    selectionTarget.classList.add("has-selection");
     searchInput.value = "";
     searchInput.setCustomValidity("");
+    resultsTarget.classList.remove("is-suggestions");
     resultsTarget.replaceChildren();
   };
 
   const renderResults = (items, { showSuggestionLabel = false } = {}) => {
+    const isShowingSuggestions = showSuggestionLabel && items.length > 0;
+    resultsTarget.classList.toggle("is-suggestions", isShowingSuggestions);
     resultsTarget.replaceChildren();
 
-    if (showSuggestionLabel && items.length) {
+    if (isShowingSuggestions) {
       const label = document.createElement("p");
       label.className = "mini-heading event-song-suggestions-label";
       label.textContent = "Popular Picks";
