@@ -1,10 +1,26 @@
+import { initializeSongPicker } from "./song-picker.js";
+
 const requestForm = document.querySelector("[data-event-request-form]");
 const requestPanel = document.querySelector("[data-event-request-panel]");
 const unavailablePanel = document.querySelector("[data-event-request-unavailable]");
 const feedback = document.querySelector("[data-event-request-feedback]");
 const eventTitleTarget = document.querySelector("[data-selected-event-title]");
 const eventMetaTarget = document.querySelector("[data-selected-event-meta]");
-const songSelect = document.querySelector("[data-event-song-select]");
+const songSearch = document.querySelector("[data-event-song-search]");
+const songResults = document.querySelector("[data-event-song-results]");
+const songValue = document.querySelector("[data-event-song-value]");
+const songSelection = document.querySelector("[data-event-song-selection]");
+const requestSuccess = document.querySelector("[data-event-request-success]");
+const requestSuccessHeading = document.querySelector("[data-event-request-success-heading]");
+const requestSuccessEvent = document.querySelector("[data-request-success-event]");
+const SUGGESTED_SONGS = [
+  { title: "Jolene", artist: "Dolly Parton" },
+  { title: "Fast Car", artist: "Tracy Chapman/Luke Combs" },
+  { title: "Piano Man", artist: "Billy Joel" },
+  { title: "What’s Up?", artist: "4 Non Blondes" },
+  { title: "When I Come Around", artist: "Green Day" },
+  { title: "Dreams", artist: "Fleetwood Mac" }
+];
 
 const formatDate = (dateValue) => new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
@@ -32,7 +48,7 @@ const showUnavailable = (message) => {
 };
 
 const initializeRequest = async () => {
-  if (!requestForm || !songSelect) return;
+  if (!requestForm || !songSearch || !songResults || !songValue || !songSelection) return;
   const eventId = new URLSearchParams(window.location.search).get("event") || "";
   if (!eventId) {
     showUnavailable("Choose an eligible public event from the Shows page to make an event-specific request.");
@@ -68,13 +84,15 @@ const initializeRequest = async () => {
       return;
     }
 
-    const songs = Array.isArray(songsPayload.songs) ? songsPayload.songs : [];
-    songs.sort((left, right) => left.title.localeCompare(right.title)).forEach((song) => {
-      const option = document.createElement("option");
-      option.value = `${song.title} — ${song.artist}`;
-      option.textContent = `${song.title} — ${song.artist}`;
-      songSelect.append(option);
+    const songPicker = initializeSongPicker({
+      searchInput: songSearch,
+      resultsTarget: songResults,
+      hiddenInput: songValue,
+      selectionTarget: songSelection,
+      songs: songsPayload.songs,
+      suggestions: SUGGESTED_SONGS
     });
+    if (!songPicker) throw new Error("Song picker could not be initialized.");
 
     const title = selectedEvent.title || "A Change Of Plans performance";
     if (eventTitleTarget) eventTitleTarget.textContent = title;
@@ -88,6 +106,7 @@ const initializeRequest = async () => {
     requestForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!requestForm.reportValidity()) return;
+      if (!songPicker.requireSelection()) return;
       if (!isRequestOpen(selectedEvent)) {
         showUnavailable("Song requests for this event are now closed.");
         return;
@@ -108,11 +127,16 @@ const initializeRequest = async () => {
         requestForm.elements.event_id.value = selectedEvent.eventId;
         requestForm.elements.event_title.value = title;
         requestForm.elements.event_date.value = selectedEvent.date;
-        if (feedback) feedback.textContent = "Your request was sent. Requests help shape the set, but a song is not guaranteed to be performed.";
+        songPicker.reset();
+        if (feedback) feedback.textContent = "";
+        requestForm.hidden = true;
+        if (requestSuccess) requestSuccess.hidden = false;
+        if (requestSuccessEvent) requestSuccessEvent.textContent = title;
+        requestSuccessHeading?.focus();
       } catch (error) {
         if (feedback) feedback.textContent = error.message || "There was a problem sending your request.";
       } finally {
-        if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Send Event Song Request"; }
+        if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Send My Request"; }
       }
     });
   } catch (error) {

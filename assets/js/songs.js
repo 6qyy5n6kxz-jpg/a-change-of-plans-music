@@ -1,3 +1,5 @@
+import { initializeSongPicker } from "./song-picker.js";
+
 const songListTarget = document.querySelector("[data-song-list]");
 const songMetaTarget = document.querySelector("[data-song-meta]");
 const songSearch = document.querySelector("#song-search");
@@ -6,6 +8,11 @@ const songActions = document.querySelector("[data-song-actions]");
 const showMoreButton = document.querySelector("[data-song-show-more]");
 const requestForm = document.querySelector("[data-song-request-form]");
 const requestFeedback = document.querySelector("[data-song-request-feedback]");
+const liveSongSearch = document.querySelector("[data-live-song-search]");
+const liveSongResults = document.querySelector("[data-live-song-results]");
+const liveSongValue = document.querySelector("[data-live-song-value]");
+const liveSongSelection = document.querySelector("[data-live-song-selection]");
+const liveRequestSuccess = document.querySelector("[data-live-request-success]");
 const RESULTS_BATCH_SIZE = 12;
 const FEATURED_SONGS = [
   { title: "Brown Eyed Girl", artist: "Van Morrison" },
@@ -23,29 +30,27 @@ let visibleSongCount = RESULTS_BATCH_SIZE;
 let allSongs = [];
 let hasExitedFeaturedMode = true;  // Start with featured mode disabled - show all songs with pagination
 
-// Populate live song select (from live.html page)
-const populateLiveSongSelect = async () => {
-  const liveSongSelect = document.querySelector("[data-live-song-select]");
-  if (!liveSongSelect) return;
+const initializeLiveSongPicker = async () => {
+  if (!liveSongSearch || !liveSongResults || !liveSongValue || !liveSongSelection) return null;
 
   try {
     const response = await fetch(window.resolveSitePath("data/songs.json"));
-    if (!response.ok) return;
+    if (!response.ok) throw new Error(`Song data returned ${response.status}`);
     const payload = await response.json();
-    const songs = Array.isArray(payload.songs) ? payload.songs : [];
-    
-    songs.sort((left, right) => left.title.localeCompare(right.title)).forEach((song) => {
-      const option = document.createElement("option");
-      option.value = `${song.title} — ${song.artist}`;
-      option.textContent = `${song.title} — ${song.artist}`;
-      liveSongSelect.append(option);
+    return initializeSongPicker({
+      searchInput: liveSongSearch,
+      resultsTarget: liveSongResults,
+      hiddenInput: liveSongValue,
+      selectionTarget: liveSongSelection,
+      songs: payload.songs
     });
   } catch (error) {
-    console.error("Unable to populate live song select.", error);
+    console.error("Unable to initialize live song picker.", error);
+    return null;
   }
 };
 
-populateLiveSongSelect();
+const liveSongPickerPromise = initializeLiveSongPicker();
 
 const normalizeValue = (value) => (value || "").toString().trim().toLowerCase();
 
@@ -235,14 +240,26 @@ if (requestForm && requestFeedback) {
       return;
     }
 
+    const liveSongPicker = await liveSongPickerPromise;
+    const suggestedSong = requestForm.elements.song_suggestion?.value.trim() || "";
+    if (!liveSongPicker?.getSelectedValue() && !suggestedSong) {
+      if (liveSongPicker) {
+        liveSongPicker.requireSelection("Choose a repertoire song or enter a song suggestion.");
+      } else {
+        requestFeedback.textContent = "Enter a song suggestion to send your request.";
+      }
+      return;
+    }
+
     const formData = new FormData(requestForm);
-    formData.append("_subject", `A Change Of Plans song request: ${formData.get("song") || "New request"}`);
+    formData.append("_subject", `A Change Of Plans song request: ${formData.get("song") || suggestedSong}`);
 
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
+      submitButton.textContent = "Sending…";
     }
 
+    if (liveRequestSuccess) liveRequestSuccess.hidden = true;
     requestFeedback.textContent = "Sending your song request...";
 
     try {
@@ -270,7 +287,12 @@ if (requestForm && requestFeedback) {
       }
 
       requestForm.reset();
-      requestFeedback.textContent = "Thanks! Your song request was sent.";
+      liveSongPicker?.reset();
+      requestFeedback.textContent = "";
+      if (liveRequestSuccess) {
+        liveRequestSuccess.hidden = false;
+        liveRequestSuccess.focus();
+      }
     } catch (error) {
       requestFeedback.textContent = error.message || "There was a problem sending your song request. Please try again in a few minutes.";
     } finally {

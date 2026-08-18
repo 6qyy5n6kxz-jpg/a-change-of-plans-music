@@ -52,14 +52,21 @@ const getRequestState = (event) => {
   return Date.now() >= closesAt ? "closed" : "open";
 };
 
-const renderRequestAction = (event) => {
-  const state = getRequestState(event);
+const renderRequestAction = (event, state = getRequestState(event)) => {
   if (state === "disabled") return "";
-  if (state === "closed") return '<p class="request-closed">Song requests for this event are now closed.</p>';
+  if (state === "closed") {
+    return '<p class="event-request-status event-request-status-closed">Song requests closed</p>';
+  }
   const eventName = getEventHeadline(event);
-  const label = event.requestLabel || "Request a Song for This Show";
+  const label = event.requestLabel || "Request a Song";
   const href = window.resolveSitePath(`request-song/?event=${encodeURIComponent(event.eventId)}`);
-  return `<p class="event-request-action"><a class="button button-secondary" href="${escapeHtml(href)}" aria-label="Request a song for ${escapeHtml(eventName)} on ${escapeHtml(formatDate(event.date))}">${escapeHtml(label)}</a></p>`;
+  return `
+    <p class="event-request-status event-request-status-open">
+      <span aria-hidden="true"></span>
+      Song requests are open
+    </p>
+    <p class="event-request-action"><a class="button button-secondary" href="${escapeHtml(href)}" aria-label="Request a song for ${escapeHtml(eventName)} on ${escapeHtml(formatDate(event.date))}">${escapeHtml(label)}</a></p>
+  `;
 };
 
 const injectEventSchema = (items) => {
@@ -190,15 +197,16 @@ const renderEvents = async () => {
     const privateEvents = items.filter((event) => isPrivateEvent(event));
 
     let html = publicEvents.map((event) => {
+      const requestState = getRequestState(event);
       return `
-        <article class="event-card">
+        <article class="event-card${requestState === "open" ? " event-card-request-open" : ""}">
           <div class="event-card-topline">
             <time class="event-date" datetime="${escapeHtml(event.date)}">${escapeHtml(formatDate(event.date))}</time>
           </div>
           <h3>${escapeHtml(getEventHeadline(event))}</h3>
-          ${renderDescription(event.description)}
           <p class="event-time"><strong>Time:</strong> <span>${escapeHtml(event.time)}</span></p>
-          ${renderRequestAction(event)}
+          ${renderDescription(event.description)}
+          ${renderRequestAction(event, requestState)}
         </article>
       `;
     }).join("");
