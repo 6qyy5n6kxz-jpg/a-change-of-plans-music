@@ -136,6 +136,48 @@ body[data-page] {
   margin-top: 1.75rem;
 }
 
+/* Live demo section */
+.live-demo-section {
+  overflow: hidden;
+}
+
+.live-demo-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.live-demo-copy {
+  max-width: 36rem;
+}
+
+.live-demo-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.live-demo-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #111;
+  box-shadow: var(--shadow);
+}
+
+.live-demo-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #111;
+}
+
+@media (min-width: 900px) {
+  .live-demo-layout {
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: 3rem;
+  }
+}
+
 .benefit-grid,
 .event-category-grid,
 .duo-grid,
