@@ -1,3 +1,12 @@
 {
-  "reviews": []
+  "reviews": [
+    {
+      "rating": 5,
+      "reviewer": "Perfect Imperfections Boutique & Design",
+      "event": "Perfect Imperfections Boutique",
+      "event_date": "2026-09-04",
+      "quote": "A Change of Plans is one of those bands that you don’t just listen to—you FEEL their music! They sound amazing, sing with so much soul, take requests, and have a huge music selection with something for everyone. These two are the real deal, and I’m always excited when they’re on the schedule!",
+      "source": "Venue testimonial"
+    }
+  ]
 }
