@@ -1,3 +1,26 @@
+const CRM_INTAKE_URL = "https://krgvotkqeguvfiowammp.supabase.co/functions/v1/ingest-crm-lead";
+
+// Copies a submitted inquiry into the Command Center Leads list. Formspree still sends the email;
+// if this copy fails, the visitor's submission is unaffected.
+function sendLeadToCommandCenter(source, formData) {
+  try {
+    const payload = {};
+    formData.forEach((value, key) => {
+      if (typeof value !== "string" || (key.startsWith("_") && key !== "_gotcha")) return;
+      payload[key] = key in payload ? [].concat(payload[key], value) : value;
+    });
+    const id = window.crypto?.randomUUID ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    fetch(CRM_INTAKE_URL, {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ source, source_submission_id: `${source}:${id}`, submitted_at: new Date().toISOString(), payload })
+    }).catch(() => {});
+  } catch {
+    // Never block the visitor's submission.
+  }
+}
+
 // Wait for DOM to be fully loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeForm);
@@ -160,6 +183,8 @@ function initializeForm() {
         }
         throw new Error(message);
       }
+
+      sendLeadToCommandCenter("acop_website", formData);
 
       contactForm.reset();
       contactFeedback.textContent = "";
