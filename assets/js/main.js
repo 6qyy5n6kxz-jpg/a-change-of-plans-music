@@ -84,11 +84,22 @@ if (footerTarget) {
             <a class="button button-primary footer-cta" href="${resolveSitePath("/contact/")}">Check Availability</a>
           </div>
         </div>
+        <div class="footer-newsletter" data-newsletter-signup="a-change-of-plans" data-title="Get show dates first" data-description="New public shows and the songs we just added, a few times a year." data-button="Sign me up" data-theme="dark"></div>
         <div class="footer-utility"><a href="${resolveSitePath("/about/")}">About</a><a href="${resolveSitePath("/reviews/")}">Reviews</a><a href="${resolveSitePath("/contact/")}">Contact</a></div>
         <p class="footer-legal">&copy; <span data-current-year></span> A Change Of Plans.</p>
       </div>
     </footer>`;
 }
+// Newsletter signup in the footer (Frank Creations Command Center widget). The visitor gets an
+// email to confirm before they're added to the list.
+if (footerTarget && !document.querySelector('script[data-frank-newsletter]')) {
+  const newsletterScript = document.createElement("script");
+  newsletterScript.src = "https://frank-creations-booking-center.vercel.app/newsletter-signup.js";
+  newsletterScript.defer = true;
+  newsletterScript.dataset.frankNewsletter = "1";
+  document.head.appendChild(newsletterScript);
+}
+
 
 document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = new Date().getFullYear(); });
 

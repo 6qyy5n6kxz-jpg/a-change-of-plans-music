@@ -4728,3 +4728,8 @@ body[data-page="graduation"] .section {
     width: 100%;
   }
 }
+
+/* Footer newsletter signup (rendered by the Command Center widget) */
+.footer-newsletter { margin: 28px 0 8px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .16); }
+.footer-newsletter .fcn-form { max-width: 560px; }
+.footer-newsletter .fcn-form h3 { color: #fff; }
