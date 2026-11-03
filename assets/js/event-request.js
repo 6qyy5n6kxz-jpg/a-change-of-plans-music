@@ -1,3 +1,4 @@
+import { loadEventsPayload } from "./events-source.js";
 import { initializeSongPicker } from "./song-picker.js";
 
 const requestForm = document.querySelector("[data-event-request-form]");
@@ -56,13 +57,13 @@ const initializeRequest = async () => {
   }
 
   try {
-    const [eventsResponse, songsResponse, configResponse] = await Promise.all([
-      fetch(window.resolveSitePath("data/events.json")),
+    const [eventsPayload, songsResponse, configResponse] = await Promise.all([
+      loadEventsPayload(),
       fetch(window.resolveSitePath("data/songs.json")),
       fetch(window.resolveSitePath("data/site-config.json"))
     ]);
-    if (!eventsResponse.ok || !songsResponse.ok) throw new Error("Request information could not be loaded.");
-    const [eventsPayload, songsPayload] = await Promise.all([eventsResponse.json(), songsResponse.json()]);
+    if (!songsResponse.ok) throw new Error("Request information could not be loaded.");
+    const songsPayload = await songsResponse.json();
     if (configResponse.ok) {
       const config = await configResponse.json();
       if (/^https:\/\/formspree\.io\/f\//i.test(config.songRequestFormEndpoint || "")) {

@@ -59,6 +59,18 @@ To update solo references across the site:
 
 ---
 
+## Show Schedule Source (Command Center)
+
+Shows can come straight from the Frank Creations Command Center instead of this repository:
+**A Change of Plans → Gigs → Website** on a gig, choose *Private* or *Public*, then **Publish to website**.
+
+- `data/public-content.json` is the switch. With `"enabled": true`, the Shows page and the song-request
+  page read the live feed at `events_endpoint` (published gigs only; never pay, notes or addresses).
+- With `"enabled": false`, or whenever the feed can't be reached, the site uses `data/events.json` below,
+  so the schedule never goes blank. Once the feed is on, manage shows in the Command Center and keep
+  `data/events.json` only as a backup.
+- Song-request links use each show's `eventId`, which the Command Center keeps fixed once published.
+
 ## Private vs Public Events
 
 ### Event Data Fields

@@ -1,3 +1,5 @@
+import { loadEventsPayload } from "./events-source.js";
+
 const eventsContainer = document.querySelector("[data-events-list]");
 const summaryTarget = document.querySelector("[data-events-summary]");
 const scheduleToggle = document.querySelector("[data-schedule-toggle]");
@@ -173,10 +175,7 @@ const renderEvents = async () => {
   if (!eventsContainer) return;
 
   try {
-    const response = await fetch(window.resolveSitePath("data/events.json"));
-    if (!response.ok) throw new Error(`Failed to load events: ${response.status}`);
-
-    const payload = await response.json();
+    const payload = await loadEventsPayload();
     const category = eventsContainer.dataset.eventCategory || "music";
     const todayKey = getTodayKey();
     const items = (Array.isArray(payload.events) ? payload.events : [])
@@ -218,7 +217,7 @@ const renderEvents = async () => {
           <h3 class="private-events-heading">Also Booked Privately</h3>
           ${privateEvents.map((event) => {
             const categoryLabel = event.eventType && event.eventType !== "private" 
-              ? `<span class="private-event-category">${escapeHtml(event.eventType)}</span>`
+              ? `<span class="private-event-category">${escapeHtml(String(event.eventType).replaceAll("_", " "))}</span>`
               : "";
             return `
               <article class="event-card event-card-private">
