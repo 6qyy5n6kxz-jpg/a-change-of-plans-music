@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "events_endpoint": "https://krgvotkqeguvfiowammp.supabase.co/functions/v1/acop-public-content",
+  "_setup": "Shows come from the Command Center (A Change of Plans → Gigs → Website → Publish). Deploy acop-public-content, check the feed URL returns your published gigs, then set enabled to true. While false, or if the feed is unreachable, the site uses data/events.json. Never put credentials here."
+}
